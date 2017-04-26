@@ -1,0 +1,87 @@
+
+
+
+
+
+body {
+    background-color: rgb(230, 225, 225);
+    padding-top: 10px;
+}
+
+.main-body {
+    background: gray;
+
+}
+
+.refer-heading{
+    background: dodgerblue;
+
+}
+.refer-1-plot {
+    background: darkblue;
+
+}
+.refer-1-info {
+    background: yellowgreen;
+    
+}
+.refer-2-plot {
+    background: blue;
+
+}
+.refer-2-info {
+    background: green;
+    
+}
+.refer-3-plot {
+    background: darkblue;
+
+}
+.refer-3-info {
+    background: yellowgreen;
+    
+}
+.refer-4-plot {
+    background: blue;
+
+}
+.refer-4-info {
+    background: green;
+    
+}
+.refer-5-plot {
+    background: darkblue;
+
+}
+.refer-5-info {
+    background: yellowgreen;
+    
+}
+.refer-6-plot {
+    background: blue;
+
+}
+.refer-6-info {
+    background: green;
+    
+}
+.current-weather {
+    background: red;
+}
+.five-day {
+    background: rebeccapurple;
+
+}
+.side-element {
+height: 90px;
+
+
+}
+.sidebar {
+    /*display: block;*/
+    height: 900px;
+
+}
+.logo-block {
+    background: seagreen;
+}
