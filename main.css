@@ -6,6 +6,7 @@
 body {
     background-color: rgb(230, 225, 225);
     padding-top: 10px;
+    overflow: hidden;
 }
 
 .main-body {
