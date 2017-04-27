@@ -73,13 +73,17 @@ body {
 
 }
 .side-element {
-height: 90px;
+
 
 
 }
+.facebook-feed {
+
+ 
+}
 .sidebar {
     /*display: block;*/
-    height: 900px;
+  
 
 }
 .logo-block {
