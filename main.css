@@ -5,45 +5,50 @@
 
 body {
     background-color: rgb(230, 225, 225);
-    padding-top: 10px;
+    
     overflow: hidden;
 }
 
 .main-body {
-    background: gray;
+    background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
+    background-size: cover;;
 
 }
 
+.refersize{
+    height: 100px;
+    
+}
 .refer-heading{
     background: dodgerblue;
 
 }
 .refer-1-plot {
-    background: darkblue;
+    background: lightblue;
 
 }
 .refer-1-info {
-    background: yellowgreen;
+    background: darkseagreen;
     
 }
 .refer-2-plot {
-    background: blue;
+    background: lightsteelblue;
 
 }
 .refer-2-info {
-    background: green;
+    background: lightyellow;
     
 }
 .refer-3-plot {
-    background: darkblue;
+    background: lightblue;
 
 }
 .refer-3-info {
-    background: yellowgreen;
+    background: darkseagreen;
     
 }
 .refer-4-plot {
-    background: blue;
+    background: lightsteelblue;
 
 }
 .refer-4-info {
@@ -51,15 +56,15 @@ body {
     
 }
 .refer-5-plot {
-    background: darkblue;
+    background: lightblue;
 
 }
 .refer-5-info {
-    background: yellowgreen;
+    background: darkseagreen;
     
 }
 .refer-6-plot {
-    background: blue;
+    background: lightsteelblue;
 
 }
 .refer-6-info {
@@ -68,9 +73,12 @@ body {
 }
 .current-weather {
     background: red;
+    height:120px;
+
 }
 .five-day {
     background: rebeccapurple;
+    height:120px;
 
 }
 .side-element {
@@ -79,14 +87,24 @@ body {
 
 }
 .facebook-feed {
-
+    text-shadow: 1px 1px 1px rgba(255, 0, 0, .6);
+    position:relative;
+    padding-top: 20px;
+    
  
 }
 .sidebar {
-    /*display: block;*/
+  
   
 
 }
 .logo-block {
     background: seagreen;
+}
+
+.clock{
+    height:30px;
+    float:right;
+    padding-top:5px;
+    font-size: 30px;
 }

@@ -12,7 +12,7 @@
 
     right colum has Tass logo, Facebook special, Front Dining temp, middle dining temp, and outside temp and humidity
     each refer has it's own json data entry, and uses canavas to graph temps, also changes colors depending on sensor data in json file
-
+    wu api key 15b4ef203516fcdb
     -->
 
 <head>
@@ -33,19 +33,21 @@
         
         <div class="row">
         
-            <div class="col-lg-8 refer-heading">
+            <div class="col-lg-6 refer-heading"> <!-- left side of page -->
                
                 <div class="row">
-                    <div class="col-lg-8 refer-1-plot">
+                    <div class="col-lg-9 refer-1-plot refersize">
                         <h1>Refer 1 graph</h1>
                     </div>
-                    <div class="col-lg-4 refer-1-info">
+                    
+                    <div class="col-lg-3 refer-1-info">
                         <h1>Unit ID and CurrentTemp</h1>
                     </div>
+                   
         
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 refer-2-plot">
+                    <div class="col-lg-8 refer-2-plot refersize">
                         <h1>Refer 2 graph</h1>
                     </div>
                     <div class="col-lg-4 refer-2-info">
@@ -53,15 +55,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 refer-3-plot">
+                    <div class="col-lg-9 refer-3-plot refersize">
                         <h1>Refer 3 graph</h1>
                     </div>
-                    <div class="col-lg-4 refer-3-info">
+                    <div class="col-lg-3 refer-3-info">
                         <h1>Unit ID and CurrentTemp</h1>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 refer-4-plot">
+                    <div class="col-lg-8 refer-4-plot refersize">
                         <h1>Refer 4 graph</h1>
                     </div>
                     <div class="col-lg-4 refer-4-info">
@@ -69,22 +71,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 refer-5-plot">
+                    <div class="col-lg-9 refer-5-plot refersize">
                         <h1>Refer 5 graph</h1>
                     </div>
-                    <div class="col-lg-4 refer-5-info">
+                    <div class="col-lg-3 refer-5-info">
                         <h1>Unit ID and CurrentTemp</h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-8 refer-6-plot">
-                        <h1>Refer 6 graph</h1>
-                    </div>
-                    <div class="col-lg-4 refer-6-info">
-                        <h1>Unit ID and CurrentTemp</h1>
-                    </div>
-                    
-                </div>
+
                 <div class="row">
                     <div class="col-lg-12 current-weather">
                         <h1>Today's Weather: Ollie says it raining!</h1>
@@ -98,18 +92,19 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 sidebar">
+            <div class="col-lg-6 sidebar">
                 <div class="logo-block side-element">
-                    <h1>TasSystem</h1>
+                    <img src="./tasslogo.jpg" height="30" width="80" style="float:left" />
+                    <div class="clock" id="live-clock"></div>
                 </div>
                 <div class="facebook-feed side-element">
-                    <div class="well">
-                        <h6 style="text-align:center">Today's Specials</h6>
+                    <div class="facebook-heading">
+                        <h4>Today's Specials</h4>
                     </div>
-<iframe  src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmerksplace
-&width=400&colorscheme=light&show_faces=false&border_color&stream=true&header=true&height=550" 
-scrolling="yes" overflow="hidden" style="border:2px; overflow:hidden; width:400px; height:455px; background: white; position:absolute; " allowtransparency="true" 
-frameborder="0"></iframe>
+                    <iframe  src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmerksplace
+                    &width=400&colorscheme=light&show_faces=false&border_color&stream=true&header=true&height=500" 
+                    scrolling="no" overflow="hidden" style="border:2px; overflow:hidden; width:400px; height:500px; background: white; position:relative; " allowtransparency="true" 
+                    frameborder="0"></iframe>
                 </div>
                 <div class="front-room side-element">
                     <h1>Front Room Temps</h1>
