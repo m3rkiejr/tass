@@ -16,7 +16,8 @@ body {
 }
 
 .refersize{
-    height: 125px;
+    height: 124px;
+    overflow: hidden;
     
 }
 .refer-heading{
@@ -101,4 +102,6 @@ body {
     float:right;
     padding-top:5px;
     font-size: 30px;
+    color: #FFFFAA;
+    text-shadow: 1px 1px 1px black;
 }
