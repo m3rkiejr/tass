@@ -16,7 +16,7 @@ body {
 }
 
 .refersize{
-    height: 95px;
+    height: 125px;
     
 }
 .refer-heading{
@@ -63,14 +63,8 @@ body {
     background: darkseagreen;
     
 }
-.refer-6-plot {
-    background: lightsteelblue;
 
-}
-.refer-6-info {
-    background: green;
-    
-}
+
 .current-weather {
     background: red;
     height:75px;
