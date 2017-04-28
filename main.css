@@ -16,7 +16,7 @@ body {
 }
 
 .refersize{
-    height: 100px;
+    height: 95px;
     
 }
 .refer-heading{
@@ -73,12 +73,12 @@ body {
 }
 .current-weather {
     background: red;
-    height:120px;
+    height:75px;
 
 }
 .five-day {
     background: rebeccapurple;
-    height:120px;
+    height:75px;
 
 }
 .side-element {
