@@ -19,9 +19,27 @@ function GetClock(){
         document.getElementById('live-clock').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
 }
 
+
+function drawCanvas (referNum){
+        var ctx = document.getElementById("refer-canvas" + referNum).getContext("2d");
+        var tempUnsafe = c.getContext("2d");
+//draw safeline
+        tempUnsafe.moveTo(0,50);
+        tempUnsafe.lineTo(200, 50);
+        tempUnsafe.stroke();
+
+        ctx.moveTo(0,100);
+        ctx.lineTo(50,73);
+        ctx.lineTo(80, 45);
+        ctx.lineTo(124, 86);
+        ctx.lineTo(144, 72);
+        ctx.stroke();
+}
+
 $(document).ready(function() {
     GetClock();
     setInterval(GetClock,1000);
+    drawCanvas(1);
     
 
 });
