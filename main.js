@@ -51,21 +51,35 @@ $(document).ready(function() {
 
 
     //create chart 1
+    var maxTemp = 41;
     var chart = new CanvasJS.Chart("referCanvas1",
-        {
-            animationEnabled: true,
+        {                    
             backgroundColor: "skyblue",
-            /*title:{
-            text: "Refer 1",
-            fontSize: 30
-            },*/
+            
             axisX: {
-                valueFormatString: "MMM",
-                interval:1,
-                intervalType: "month"
+                valueFormatString: "#",
+                interval:3,
+               
+                labelFontSize: 10,
+                
             },
             axisY:{
-                includeZero: false
+                
+                labelFontSize: 20,
+                interval: 10,
+                minimum: 30,
+                maximum:60,
+                stripLines: [
+                            {
+                                
+                                value:41,
+                                color:"red",
+                                label : "41" + String.fromCharCode(176),
+                                thickness:.5,
+                                labelBackgroundColor:"skyblue",
+                                labelColor: "red"
+                            }
+                            ]
 
             },
             data: [
@@ -73,7 +87,6 @@ $(document).ready(function() {
                 type: "spline",
 
                 dataPoints: [
-                { x: 0, y: 39.15 },
                 { x: 1, y: 38.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
@@ -84,7 +97,9 @@ $(document).ready(function() {
                 { x: 8, y: 41.10 },
                 { x: 9, y: 39.08 },
                 { x: 10, y: 39.10 },
-                { x: 11, y: 38.10 }
+                { x: 11, y: 38.10 },
+                { x: 12, y: 39.15 }
+                
                 ]
             }
             ]
