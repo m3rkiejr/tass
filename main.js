@@ -19,6 +19,9 @@ function GetClock(){
         document.getElementById('live-clock').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
 }
 
+function redraw(chart) {
+    chart.render();
+}
 /*
 function drawCanvas (referNum){
         var ctx = document.getElementById("refer-canvas" + referNum).getContext("2d");
@@ -52,10 +55,10 @@ $(document).ready(function() {
         {
             animationEnabled: true,
             backgroundColor: "skyblue",
-            title:{
+            /*title:{
             text: "Refer 1",
             fontSize: 30
-            },
+            },*/
             axisX: {
                 valueFormatString: "MMM",
                 interval:1,
@@ -86,7 +89,7 @@ $(document).ready(function() {
             }
             ]
     });
-    
+
         chart.render();
 
 });
