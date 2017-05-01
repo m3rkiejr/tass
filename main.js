@@ -20,8 +20,8 @@ function GetClock(){
 }
 
 function updateChart(chart1, referData) {
-    
-    chart1.options.data[0].dataPoints = referData;
+    // check if sensor is dead, or sending bad info, if so, do not render new data, instead disconnect error, or sensor data error
+    chart1.options.data[0].dataPoints = referData;  //next step is to create json to pull data into an array referData and parse the config file
     chart1.render();
 }
 /*
@@ -47,11 +47,15 @@ function drawCanvas (referNum){
 
 
 $(document).ready(function() {
+
+    // globals
+    
+
     GetClock();
     setInterval(GetClock,1000);
     //drawCanvas(1);
     referData = 
-[[
+    [[
                 { x: 1, y: 45.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
@@ -82,54 +86,66 @@ $(document).ready(function() {
                 { x: 28, y: 56.12 },
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
-], []];
-
-    //create chart 1
+    ], []];
+ /* this section is for creating object charts 1 - 5,  baseChart changes all charts */
     var maxTemp = 41;
-    var chart = new CanvasJS.Chart("referCanvas1",
-        {                    
+    var baseChart =         {                    
             backgroundColor: "skyblue",
-            
             axisX: {
                 valueFormatString: "#",
                 interval:3,
-                
                 labelFontSize: 10
-                
             },
             axisY:{
-                
                 labelFontSize: 20,
-                interval: 10,
+                interval: 5,
                 minimum: 30,
-                maximum:60,
+                maximum:50,
                 stripLines: [
                             {
-                                
                                 value:41,
                                 color:"red",
                                 label : maxTemp + String.fromCharCode(176),
                                 thickness:.7,
                                 labelBackgroundColor:"skyblue",
                                 labelColor: "red",
-                                labelFontSize: 16
+                                labelFontSize: 17
                             }
                             ]
-
             },
             data: [
             {
                 type: "spline",
-
                 dataPoints: [
                 { x: 1, y: 41.12},
                 ]
             }
             ]
-    });
-    chart.render();
+    };
 
-    setInterval(updateChart, 60000, chart, referData[0]);
+//create chart 1
+    var chart1 = new CanvasJS.Chart("referChart1", baseChart);
+// chart 2
+    var chart2 = new CanvasJS.Chart("referChart2", baseChart);
+//chart 3
+    var chart3 = new CanvasJS.Chart("referChart3", baseChart);
+ //chart 4
+    var chart4 = new CanvasJS.Chart("referChart4", baseChart);
+// chart 5
+    var chart5 = new CanvasJS.Chart("referChart5", baseChart);
+
+    /* END OF CHARTS */
+    chart1.render();
+    chart2.render();
+    chart3.render();
+    chart4.render();
+    chart5.render();
+
+    setInterval(updateChart, 51000, chart1, referData[0]);
+    setInterval(updateChart, 52000, chart2, referData[0]);
+    setInterval(updateChart, 52200, chart3, referData[0]);
+    setInterval(updateChart, 54500, chart4, referData[0]);
+    setInterval(updateChart, 54800, chart5, referData[0]);
     
 
 });
