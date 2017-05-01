@@ -89,6 +89,7 @@ $(document).ready(function() {
     ], []];
  /* this section is for creating object charts 1 - 5,  baseChart changes all charts */
     var maxTemp = 41;
+    var numOfCharts = 5;
     var baseChart =         {                    
             backgroundColor: "skyblue",
             axisX: {
@@ -122,7 +123,24 @@ $(document).ready(function() {
             }
             ]
     };
+/*
+    var chart = [new CanvasJS.Chart("referChart" + 1, baseChart)];
+    chart[0].render();
+    */
+    var chart = new Array();
 
+    for (var i=1; i <= numOfCharts; i++) {
+        
+        chart.push(new CanvasJS.Chart("referChart" + i, baseChart));
+    };
+
+    for (var i=0; i < numOfCharts; i++) {
+        chart[i].render();
+    };
+
+    
+
+/*
 //create chart 1
     var chart1 = new CanvasJS.Chart("referChart1", baseChart);
 // chart 2
@@ -134,7 +152,6 @@ $(document).ready(function() {
 // chart 5
     var chart5 = new CanvasJS.Chart("referChart5", baseChart);
 
-    /* END OF CHARTS */
     chart1.render();
     chart2.render();
     chart3.render();
@@ -146,7 +163,7 @@ $(document).ready(function() {
     setInterval(updateChart, 52200, chart3, referData[0]);
     setInterval(updateChart, 54500, chart4, referData[0]);
     setInterval(updateChart, 54800, chart5, referData[0]);
-    
+    */
 
 });
 
