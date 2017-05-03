@@ -2,7 +2,7 @@
 tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
 
-function GetClock(){
+function GetClock(){  //borrowed code, not my own, but quick and functional, thanks https://www.ricocheting.com/code/javascript/html-generator/date-time-clock
         var d=new Date();
         var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
         if(nyear<1000) nyear+=1900;
@@ -19,8 +19,12 @@ function GetClock(){
         document.getElementById('live-clock').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
 }
 
-function updateChart(chart1, referData) {
+function updateChart(chart1, referData) {  //chart 1 is chart to be rendered, referData is a array of any length containing one x and one y coord
     // check if sensor is dead, or sending bad info, if so, do not render new data, instead disconnect error, or sensor data error
+    if (Math.abs(referData[0]["y"]) == 196.60){
+        // error function goes here
+    
+    } 
     chart1.options.data[0].dataPoints = referData;  //next step is to create json to pull data into an array referData and parse the config file
     chart1.render();
 }
@@ -48,16 +52,15 @@ function drawCanvas (referNum){
 
 $(document).ready(function() {
 
-    // globals
     
 
     GetClock();
     setInterval(GetClock,1000);
     
-    // temp array for chart purposes but final version will use referData[] to set chart temps
+    //  array for chart purposes, use referData[chartNumber] to set chart temps (array is [30] deep with {x and y coords})
     referData = 
     [[
-                { x: 1, y: 45.12},
+                { x: 1, y: -196.60},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 56.12 },
@@ -274,7 +277,7 @@ $(document).ready(function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ]];
- /* this section is for creating object charts 1 - 5,  baseChart changes all charts */
+ /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
     var maxTemp = 41;
     var numOfCharts = 5;
     var baseChart =         {                    
@@ -310,19 +313,20 @@ $(document).ready(function() {
             ]
     };
 
-    var chart = new Array();
+    var chart = [];  //temp chart array
 
-    for (var i=1; i <= numOfCharts; i++) {
+    for (var i=1; i <= numOfCharts; i++) { //creates new charts, with incremental names (1- numOfCharts)
         
         chart.push(new CanvasJS.Chart("referChart" + i, baseChart));
     };
 
-    for (var i=0; i < numOfCharts; i++) {
+    for (var i=0; i < numOfCharts; i++) { // initially renders chart data with 1 datapoint ()
         chart[i].render();
     };
     var ref=0;
-    for (var i=0;i < numOfCharts; i++) {
-        setInterval(updateChart, 51000, chart[i], referData[ref++]);
+    for (var i=0;i < numOfCharts; i++) {  //sets charts to update (through function updateChart)  and then re-render every 51 seconds
+
+        setInterval(updateChart, 5000, chart[i], referData[ref++]); //to alter charts, change data in referData arrays
 
     }
  
