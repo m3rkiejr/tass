@@ -19,14 +19,23 @@ function GetClock(){  //borrowed code, not my own, but quick and functional, tha
         document.getElementById('live-clock').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
 }
 
-function updateChart(chart1, referData) {  //chart 1 is chart to be rendered, referData is a array of any length containing one x and one y coord
+function updateTChart(chart, referData, numOfCharts, sensorName) {  //chart 1 is chart to be rendered, referData is a array of any length containing one x and one y coord
     // check if sensor is dead, or sending bad info, if so, do not render new data, instead disconnect error, or sensor data error
-    if (Math.abs(referData[0]["y"]) == 196.60){
-        // error function goes here
-    
-    } 
-    chart1.options.data[0].dataPoints = referData;  //next step is to create json to pull data into an array referData and parse the config file
-    chart1.render();
+    for (var i=0; i < numOfCharts;i++) {
+        if (Math.abs(referData[i][0]["y"]) == 196.60){ 
+            chart[i].options.data[0].dataPoints = null;
+            chart[i].options.backgroundColor = "orange";
+            chart[i].options.title.text = "Sensor Error: " + sensorName[i];
+            chart[i].options.title.fontSize = 35;
+        } else {
+            chart[i].options.title.fontSize = 10;
+            chart[i].options.title.text = sensorName[i];
+            chart[i].options.data[0].dataPoints = referData[i];
+            chart[i].options.backgroundColor = "skyblue";
+        }
+        chart[i].render();
+    }
+
 }
 /*
 function drawCanvas (referNum){
@@ -50,7 +59,7 @@ function drawCanvas (referNum){
 
 
 
-$(document).ready(function() {
+window.onload = function() {
 
     
 
@@ -58,9 +67,9 @@ $(document).ready(function() {
     setInterval(GetClock,1000);
     
     //  array for chart purposes, use referData[chartNumber] to set chart temps (array is [30] deep with {x and y coords})
-    referData = 
+    var referData = 
     [[
-                { x: 1, y: -196.60},
+                { x: 1, y: 44.60},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 56.12 },
@@ -91,7 +100,7 @@ $(document).ready(function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 45.12},
+                { x: 1, y: 41.60},
                 { x: 2, y: 49.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 46.12 },
@@ -122,7 +131,7 @@ $(document).ready(function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 45.12},
+                { x: 1, y: 22.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 56.12 },
@@ -153,7 +162,7 @@ $(document).ready(function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 45.12},
+                { x: 1, y: -196.60},
                 { x: 2, y: 49.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 46.12 },
@@ -184,7 +193,7 @@ $(document).ready(function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 45.12},
+                { x: 1, y: 44.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 56.12 },
@@ -215,7 +224,7 @@ $(document).ready(function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 35.12},
+                { x: 1, y: 55.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 38.16 },
                 { x: 4, y: 36.12 },
@@ -276,12 +285,80 @@ $(document).ready(function() {
                 { x: 28, y: 56.12 },
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
+    ], [
+                { x: 1, y: 45.12},
+                { x: 2, y: 39.61},
+                { x: 3, y: 40.16 },
+                { x: 4, y: 56.12 },
+                { x: 5, y: 59.12 },
+                { x: 6, y: 41.01 },
+                { x: 7, y: 42.02 },
+                { x: 8, y: 41.10 },
+                { x: 9, y: 39.08 },
+                { x: 10, y: 43.10 },
+                { x: 11, y: 43.10 },
+                { x: 12, y: 43.15 },
+                { x: 13, y: 43.12},
+                { x: 14, y: 43.61},
+                { x: 15, y: 43.16 },
+                { x: 16, y: 43.12 },
+                { x: 17, y: 43.12 },
+                { x: 18, y: 43.01 },
+                { x: 19, y: 43.02 },
+                { x: 20, y: 43.10 },
+                { x: 21, y: 43.08 },
+                { x: 22, y: 43.10 },
+                { x: 23, y: 38.10 },
+                { x: 24, y: 31.15 },
+                { x: 25, y: 38.12},
+                { x: 26, y: 33.61},
+                { x: 27, y: 40.16 },
+                { x: 28, y: 56.12 },
+                { x: 29, y: 59.12 },
+                { x: 30, y: 41.01 }
+    ], [
+                { x: 1, y: 45.12},
+                { x: 2, y: 39.61},
+                { x: 3, y: 40.16 },
+                { x: 4, y: 56.12 },
+                { x: 5, y: 59.12 },
+                { x: 6, y: 41.01 },
+                { x: 7, y: 42.02 },
+                { x: 8, y: 41.10 },
+                { x: 9, y: 39.08 },
+                { x: 10, y: 43.10 },
+                { x: 11, y: 43.10 },
+                { x: 12, y: 43.15 },
+                { x: 13, y: 43.12},
+                { x: 14, y: 43.61},
+                { x: 15, y: 43.16 },
+                { x: 16, y: 43.12 },
+                { x: 17, y: 43.12 },
+                { x: 18, y: 43.01 },
+                { x: 19, y: 43.02 },
+                { x: 20, y: 43.10 },
+                { x: 21, y: 43.08 },
+                { x: 22, y: 43.10 },
+                { x: 23, y: 38.10 },
+                { x: 24, y: 31.15 },
+                { x: 25, y: 38.12},
+                { x: 26, y: 33.61},
+                { x: 27, y: 40.16 },
+                { x: 28, y: 56.12 },
+                { x: 29, y: 59.12 },
+                { x: 30, y: 41.01 }
     ]];
+    var timeData = ["01:02:37am","01:02:37am","01:02:37am","01:02:37am","01:02:37am","01:02:37am","01:02:37am","01:02:37am","01:02:37am"];
+    var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00"];
+    var sensorName = ["Walk-in", "Prep-Reachin", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep"];
  /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
     var maxTemp = 41;
     var numOfCharts = 5;
     var baseChart =         {                    
             backgroundColor: "skyblue",
+            title: {
+                 text: ""
+            },
             axisX: {
                 valueFormatString: "#",
                 interval:3,
@@ -323,14 +400,16 @@ $(document).ready(function() {
     for (var i=0; i < numOfCharts; i++) { // initially renders chart data with 1 datapoint ()
         chart[i].render();
     };
-    var ref=0;
+   
     for (var i=0;i < numOfCharts; i++) {  //sets charts to update (through function updateChart)  and then re-render every 51 seconds
 
-        setInterval(updateChart, 5000, chart[i], referData[ref++]); //to alter charts, change data in referData arrays
+        setInterval(updateTChart, 5000, chart, referData, numOfCharts, sensorName); //to alter charts, change data in referData arrays
+       
 
     }
+  
  
-});
+};
 
 
 
