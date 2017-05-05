@@ -25,21 +25,27 @@ function timeCheck(timeToCheck) {
     var hour = Number(splitTime[0] + splitTime[1]);
     var minutes = Number(splitTime[3] + splitTime[4]);
     minutes = minutes + (60* hour);
-    if ((minutes - ((d.getHours() * 60) + d.getMinutes())+ 7) > 0) { // older than 7 minutes, kicks back true to set for signal loss error
-        return false;
-    }
-    else { 
-        return true;}
-
-   
     
-}
+    if (minutes > ((d.getHours() * 60) + d.getMinutes())){  //checks to see if sensor time is from previous day (dead sensor)
+       
+        return true;
+    }
+    if ((minutes - ((d.getHours() * 60) + d.getMinutes())+ 10) > 0) { // older than 10 minutes, kicks back true to set for signal loss error
+        return false;
+    } else { 
+        return true;}
+    }
 
 function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //chart 1 is chart to be rendered, referData is a array of any length containing one x and one y coord
     // check if sensor is dead, or sending bad info, if so, do not render new data, instead disconnect error, or sensor data error
     for (var i=0; i < numOfCharts;i++) {
 
-        if (timeCheck(timeData[i])) {  //checks time to see if signal has been lost for more than 5 minutes
+        if (referData[i][0]["y"] == 2000) {
+            chart[i].options.data[0].dataPoints = null;
+            chart[i].options.backgroundColor = "black";
+            chart[i].options.title.text = "Sensor Disabled: " + sensorName[i];
+            chart[i].options.title.fontSize = 20;
+        } else if (timeCheck(timeData[i])) {  //checks time to see if signal has been lost for more than 5 minutes
             chart[i].options.data[0].dataPoints = null;
             chart[i].options.backgroundColor = "grey";
             chart[i].options.title.text = "Signal Loss: " + sensorName[i];
@@ -67,9 +73,15 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
             chart[i].options.data[0].dataPoints = referData[i];
             chart[i].options.backgroundColor = "skyblue";
         }
+       
         chart[i].render();
     }
 
+}
+
+function updateFB () {
+    document.getElementById('fb-window').src += '';
+    
 }
 /*
 function drawCanvas (referNum){
@@ -196,7 +208,7 @@ window.onload = function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: -196.60},
+                { x: 1, y: 2000},
                 { x: 2, y: 49.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 46.12 },
@@ -396,12 +408,13 @@ window.onload = function() {
             axisX: {
                 valueFormatString: "#",
                 interval:3,
+                title:"minutes ago",
                 labelFontSize: 10
             },
             axisY:{
                 labelFontSize: 10,
                 interval: 10,
-
+                
                 stripLines: [
                             {
                                 value:42,
@@ -436,8 +449,8 @@ window.onload = function() {
     };
    
 
-    setInterval(updateTChart, 60000, chart, referData, numOfCharts, sensorName, timeData); //to alter charts, change data in referData arrays
-       
+    setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData); //to alter charts, change data in referData arrays
+    setInterval(updateFB, 6000000); //updates FB iframe every 10 minutes, will fix with better code later
 
   
  
