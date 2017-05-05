@@ -40,7 +40,7 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
     // check if sensor is dead, or sending bad info, if so, do not render new data, instead disconnect error, or sensor data error
     for (var i=0; i < numOfCharts;i++) {
 
-        if (referData[i][0]["y"] == 2000) {
+        if (referData[i][0]["y"] == 2000) {                         //if sensor is taken out, can set first y coord to 2000 to disable display
             chart[i].options.data[0].dataPoints = null;
             chart[i].options.backgroundColor = "black";
             chart[i].options.title.text = "Sensor Disabled: " + sensorName[i];
@@ -56,18 +56,18 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
             chart[i].options.title.text = "Sensor Error: " + sensorName[i];
             chart[i].options.title.fontSize = 35;
         } else if (referData[i][0]["y"] > 42) {  // check for high temps
-            if ((referData[i][1]["y"] > 42) && (referData[i][2]["y"] > 42) && (referData[i][3]["y"] > 42)) { // check for last 4 min critical temp
+            if ((referData[i][1]["y"] > 42) && (referData[i][2]["y"] > 42) && (referData[i][3]["y"] > 42)) { // check for last 4 min critical temp colors
                 chart[i].options.data[0].dataPoints = referData[i];
                 chart[i].options.backgroundColor = "red";
                 chart[i].options.title.text = "Critical-Temp:" + sensorName[i];
                 chart[i].options.title.fontSize = 14;
-            } else {
+            } else {                                                                                        // if < 4 min throws high temp colors
                 chart[i].options.data[0].dataPoints = referData[i];
                 chart[i].options.backgroundColor = "#ffccd1";
                 chart[i].options.title.text = "High-Temp:" + sensorName[i];
                 chart[i].options.title.fontSize = 14;            
             }
-        } else {
+        } else {                                                                            //render normal chart
             chart[i].options.title.fontSize = 10;
             chart[i].options.title.text = sensorName[i];
             chart[i].options.data[0].dataPoints = referData[i];
@@ -80,8 +80,19 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
 }
 
 function updateFB () {
+    //only update between 08 to 12 hr , updates outside of that, set timeout till next period
     document.getElementById('fb-window').src += '';
-    
+    var d = new Date();
+    var hours = d.getHours();
+    if (hours < 13 && hours > 6) {
+        setTimeout(updateFB, 30000);
+    } else if (hours < 7 && hours > 0){
+        setTimeout(updateFB, ((7-hours) * 60 * 1000));
+    } else if (hours > 13 && hours < 24) {
+        setTimeout(updateFB, ((31-hours) * 60 * 1000));
+    } else {
+        setTimeout(updateFB, 600000);
+    }
 }
 /*
 function drawCanvas (referNum){
@@ -450,7 +461,7 @@ window.onload = function() {
    
 
     setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData); //to alter charts, change data in referData arrays
-    setInterval(updateFB, 6000000); //updates FB iframe every 10 minutes, will fix with better code later
+    setTimeout(updateFB, 10000); //updates FB iframe every 10 minutes, will fix with better code later
 
   
  
