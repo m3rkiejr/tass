@@ -94,6 +94,10 @@ function updateFB () {
         setTimeout(updateFB, 600000);
     }
 }
+
+function updateWU() {
+    document.getElementById('wu-radar').src += '';
+}
 /*
 function drawCanvas (referNum){
         var ctx = document.getElementById("refer-canvas" + referNum).getContext("2d");
@@ -462,7 +466,7 @@ window.onload = function() {
 
     setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates FB iframe every 10 minutes, will fix with better code later
-
+    setInterval(updateWU, 60000);
   
  
 };
