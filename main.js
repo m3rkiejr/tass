@@ -40,21 +40,32 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
     // check if sensor is dead, or sending bad info, if so, do not render new data, instead disconnect error, or sensor data error
     for (var i=0; i < numOfCharts;i++) {
 
-        if (referData[i][0]["y"] == 2000) {                         //if sensor is taken out, can set first y coord to 2000 to disable display
+        var tempDisplay = document.getElementById('currentTemp'+ (i+1));
+
+        if (referData[i][0]["y"] == 2000) {                         //if sensor is turned off, can set first y coord to 2000 to disable display
             chart[i].options.data[0].dataPoints = null;
             chart[i].options.backgroundColor = "black";
             chart[i].options.title.text = "Sensor Disabled: " + sensorName[i];
             chart[i].options.title.fontSize = 20;
+            tempDisplay.innerHTML = "Disabled<br>";
+            tempDisplay.style.color = "black"
+                        
         } else if (timeCheck(timeData[i])) {  //checks time to see if signal has been lost for more than 5 minutes
             chart[i].options.data[0].dataPoints = null;
             chart[i].options.backgroundColor = "grey";
             chart[i].options.title.text = "Signal Loss: " + sensorName[i];
             chart[i].options.title.fontSize = 20;
+            tempDisplay.innerHTML = referData[i][0]["y"] +  String.fromCharCode(176) + "<h6></h6>";
+            tempDisplay.style.color = "lightgray"
+
         } else if (Math.abs(referData[i][0]["y"]) == 196.60){  //for sensor error (sensors report -196.60 if there is an error- software reports 196.60 if error)
             chart[i].options.data[0].dataPoints = null;
             chart[i].options.backgroundColor = "orange";
             chart[i].options.title.text = "Sensor Error: " + sensorName[i];
             chart[i].options.title.fontSize = 35;
+            tempDisplay.innerHTML = "Error";
+            tempDisplay.style.color = "orange"
+
         } else if (referData[i][0]["y"] > 42) {  // check for high temps
             if ((referData[i][1]["y"] > 42) && (referData[i][2]["y"] > 42) && (referData[i][3]["y"] > 42)) { // check for last 4 min critical temp colors
                 chart[i].options.data[0].dataPoints = referData[i];
@@ -67,14 +78,19 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
                 chart[i].options.title.text = "High-Temp:" + sensorName[i];
                 chart[i].options.title.fontSize = 14;            
             }
+            tempDisplay.innerHTML = referData[i][0]["y"] +  String.fromCharCode(176) + "<h6></h6>";
+            tempDisplay.style.color = "red"
         } else {                                                                            //render normal chart
             chart[i].options.title.fontSize = 10;
             chart[i].options.title.text = sensorName[i];
             chart[i].options.data[0].dataPoints = referData[i];
             chart[i].options.backgroundColor = "skyblue";
+            tempDisplay.innerHTML = referData[i][0]["y"] +  String.fromCharCode(176) + "<h6></h6>";
+            tempDisplay.style.color = "blue"
         }
        
         chart[i].render();
+        document.getElementById('referName' + (i+1)).innerHTML = sensorName[i];
     }
 
 }
@@ -130,7 +146,7 @@ window.onload = function() {
     //  array for chart purposes, use referData[chartNumber] to set chart temps (array is [30] deep with {x and y coords})
     var referData = 
     [[
-                { x: 1, y: 44.60},
+                { x: 1, y: 196.60},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 56.12 },
@@ -409,9 +425,9 @@ window.onload = function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ]];
-    var timeData = ["03:49:37am","03:58:37am","03:45:37am","03:34:37am","03:49:37am","01:02:37am","01:02:37am","01:02:37am","01:02:37am"];
+    var timeData = ["04:15:37","04:17:37","04:19:37","04:16:37","04:18:37","01:02:37","01:02:37","01:02:37","01:02:37"];
     var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00"];
-    var sensorName = ["Walk-in", "Prep-Reachin", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep"];
+    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep"];
  /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
     var maxTemp = 41;
     var numOfCharts = 5;

@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="./main.css">
     <script src="./main.js"></script>
     
+    
 </head>
 <body>
     <div class="container-fluid main-body">
@@ -46,7 +47,8 @@
                     </div>
                     
                     <div class="col-lg-3 refer-1-info refersize">
-                        <h1>Unit ID and CurrentTemp</h1>
+                        <h4 id="referName1"></h4>
+                        <h1 id="currentTemp1"></h1>
                     </div>
                    
         
@@ -59,7 +61,9 @@
 
                     </div>
                     <div class="col-lg-3 refer-2-info refersize">
-                        <h1>Unit ID and CurrentTemp</h1>
+
+                        <h4 id="referName2"></h4>
+                        <h1 id="currentTemp2"></h1>
                     </div>
                 </div>
                 <div class="row">
@@ -70,7 +74,9 @@
 
                     </div>
                     <div class="col-lg-3 refer-3-info refersize">
-                        <h1>Unit ID and CurrentTemp</h1>
+                        <h4 id="referName3"></h4>
+                        <h1 id="currentTemp3"></h1>
+
                     </div>
                 </div>
                 <div class="row">
@@ -81,7 +87,9 @@
 
                     </div>
                     <div class="col-lg-3 refer-4-info refersize">
-                        <h1>Unit ID and CurrentTemp</h1>
+                        <h4 id="referName4"></h4>
+                        <h1 id="currentTemp4"></h1>
+
                     </div>
                 </div>
                 <div class="row">
@@ -92,7 +100,9 @@
 
                     </div>
                     <div class="col-lg-3 refer-5-info refersize">
-                        <h1>Unit ID and CurrentTemp</h1>
+                        <h4 id="referName5"></h4>
+                        <h1 id="currentTemp5"></h1>
+
                     </div>
                 </div>
 
@@ -111,18 +121,17 @@
 
             <div class="col-lg-6 sidebar">
                 <div class="logo-block side-element">
-                    <img src="./tasslogo.jpg" height="30" width="80" style="position:relative; float:left; top:5px; right:53px" />
+                    <img src="./tasslogo.jpg" height="30" width="80" style="position:relative; float:left; top:0px; right:54px" />
                     <div class="clock" id="live-clock"></div>
                 </div>
                 <div class="facebook-feed side-element">
                     <div class="facebook-heading">
                     
                     </div>
-                    <iframe id="fb-window" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmerksplace
-                    &width=400&colorscheme=light&show_faces=false&border_color&stream=true&header=false&height=500" 
+                    <iframe id="fb-window" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmerksplace&width=400&colorscheme=light&show_faces=false&border_color&stream=true&header=false&height=500" 
                     scrolling="no" overflow="hidden" style="top:15px; right:10px; float:left; overflow:hidden; width:375px; height:500px; background: white; position:relative; " allowtransparency="true" 
                     frameborder="0"></iframe>
-                    <iframe id="wu-radar" src="http://api.wunderground.com/api/15b4ef203516fcdb/animatedradar/q/VA/Farmville.gif?newmaps=1&timelabel=1&timelabel.y=20&num=15&delay=25&width=376&height=220&noclutter=1&smooth=1" 
+                    <iframe id="wu-radar" src="http://api.wun derground.com/api/15b4ef203516fcdb/animatedradar/q/VA/Farmville.gif?newmaps=1&timelabel=1&timelabel.y=20&num=15&delay=25&width=376&height=220&noclutter=1&smooth=1" 
                         height="220" width="376" style="position:fixed; left:688px; top:546px" overflow="hidden" scrolling="no"></iframe>
                 </div>
                 <div class="front-room side-element">
@@ -138,4 +147,10 @@
                     <h1>OutDoor temp and humidity</h1>
                 </div>
 
-            </div> 
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

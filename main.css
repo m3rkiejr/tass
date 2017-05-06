@@ -30,6 +30,8 @@ body {
 }
 .refer-1-info {
     background: darkseagreen;
+    text-align: center;
+
     
 }
 .refer-2-plot {
@@ -38,7 +40,7 @@ body {
 }
 .refer-2-info {
     background: lightyellow;
-    
+    text-align: center;
 }
 .refer-3-plot {
     background: lightblue;
@@ -46,7 +48,7 @@ body {
 }
 .refer-3-info {
     background: darkseagreen;
-    
+    text-align: center;   
 }
 .refer-4-plot {
     background: lightsteelblue;
@@ -54,7 +56,7 @@ body {
 }
 .refer-4-info {
     background: green;
-    
+    text-align: center;
 }
 .refer-5-plot {
     background: lightblue;
@@ -62,7 +64,7 @@ body {
 }
 .refer-5-info {
     background: darkseagreen;
-    
+    text-align: center;  
 }
 
 
@@ -104,4 +106,9 @@ body {
     font-size: 30px;
     color: #FFFFAA;
     text-shadow: 1px 1px 1px black;
+}
+
+.disabled {
+    color: grey;
+    font-size: 30px;
 }
