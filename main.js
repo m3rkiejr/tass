@@ -101,7 +101,7 @@ function updateFB () {
     var d = new Date();
     var hours = d.getHours();
     if (hours < 13 && hours > 6) {
-        setTimeout(updateFB, 30000);
+        setTimeout(updateFB, 300000);
     } else if (hours < 7 && hours > 0){
         setTimeout(updateFB, ((7-hours) * 60 * 1000));
     } else if (hours > 13 && hours < 24) {
