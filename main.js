@@ -55,7 +55,7 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
             chart[i].options.backgroundColor = "grey";
             chart[i].options.title.text = "Signal Loss: " + sensorName[i];
             chart[i].options.title.fontSize = 20;
-            tempDisplay.innerHTML = referData[i][0]["y"] +  String.fromCharCode(176) + "<h6></h6>";
+            tempDisplay.innerHTML = referData[i][0]["y"].toFixed([1]) +  String.fromCharCode(176) + "<h6></h6>";
             tempDisplay.style.color = "lightgray"
 
         } else if (Math.abs(referData[i][0]["y"]) == 196.60){  //for sensor error (sensors report -196.60 if there is an error- software reports 196.60 if error)
@@ -78,14 +78,14 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
                 chart[i].options.title.text = "High-Temp:" + sensorName[i];
                 chart[i].options.title.fontSize = 14;            
             }
-            tempDisplay.innerHTML = referData[i][0]["y"] +  String.fromCharCode(176) + "<h6></h6>";
+            tempDisplay.innerHTML = referData[i][0]["y"].toFixed([1]) +  String.fromCharCode(176) + "<h6></h6>";
             tempDisplay.style.color = "red"
         } else {                                                                            //render normal chart
             chart[i].options.title.fontSize = 10;
             chart[i].options.title.text = sensorName[i];
             chart[i].options.data[0].dataPoints = referData[i];
             chart[i].options.backgroundColor = "skyblue";
-            tempDisplay.innerHTML = referData[i][0]["y"] +  String.fromCharCode(176) + "<h6></h6>";
+            tempDisplay.innerHTML = referData[i][0]["y"].toFixed([1]) +  String.fromCharCode(176) + "<h6></h6>";
             tempDisplay.style.color = "blue"
         }
        
@@ -96,7 +96,7 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
 }
 
 function updateFB () {
-    //only update between 08 to 12 hr , updates outside of that, set timeout till next period
+    //only update between 07 to 12 hr , updates outside of that, set timeout till next period
     document.getElementById('fb-window').src += '';
     var d = new Date();
     var hours = d.getHours();

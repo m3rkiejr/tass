@@ -1,4 +1,6 @@
 {
-    "DSLtime": "-4",
-    "unitCalibration": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    "DSLtime": "0",
+    "unitCalibration": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "sensorName": ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Front Dining", "Middle Dining", "Kitchen", "Outdoor"],
+    
 }
