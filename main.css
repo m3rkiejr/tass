@@ -69,7 +69,9 @@ body {
 
 
 .current-weather {
-    background: red;
+
+
+    background: #EEEEEE;
     height:75px;
 
 }
@@ -77,6 +79,18 @@ body {
     background: rebeccapurple;
     height:75px;
 
+}
+
+.forecast {
+    font-size: 16px;
+    text-shadow: 1px 1px 1px gray;
+
+}
+.outdoor-cond {
+    padding: 0px;
+    padding-top: 6px;
+    font-size: 19px;
+    text-shadow: 1px 1px 1px green;
 }
 .side-element {
 

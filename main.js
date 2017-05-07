@@ -136,7 +136,7 @@ function drawCanvas (referNum){
 
 
 
-window.onload = function() {
+$(document).ready( function() {
 
     
 
@@ -427,7 +427,7 @@ window.onload = function() {
     ]];
     var timeData = ["04:15:37","04:17:37","04:19:37","04:16:37","04:18:37","01:02:37","01:02:37","01:02:37","01:02:37"];
     var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00"];
-    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep"];
+    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Outdoor"];
  /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
     var maxTemp = 41;
     var numOfCharts = 5;
@@ -485,7 +485,7 @@ window.onload = function() {
     setInterval(updateWU, 600000);
   
  
-};
+});
 
 
 
