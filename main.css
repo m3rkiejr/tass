@@ -30,6 +30,7 @@ body {
 .refer-1-info {
     background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;
+    border: 7px solid #6DB06D;
 
     
 }
@@ -39,14 +40,18 @@ body {
 .refer-2-info {
     background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;
+    border: 7px solid #6DB06D;
 }
+
 .refer-3-plot {
     background: linear-gradient(to right, #A0C2FA , #6DB06D);
 
 }
 .refer-3-info {
     background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
-    text-align: center;   
+    text-align: center;
+    border: 7px solid #6DB06D;
+
 }
 .refer-4-plot {
     background: linear-gradient(to right, #A0C2FA , #6DB06D);
@@ -55,6 +60,8 @@ body {
 .refer-4-info {
     background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;
+    border: 7px solid #6DB06D;
+
 }
 .refer-5-plot {
     background: linear-gradient(to right, #A0C2FA , #6DB06D);
@@ -63,6 +70,8 @@ body {
 .refer-5-info {
     background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;  
+    border: 7px solid #6DB06D;
+
 }
 
 
