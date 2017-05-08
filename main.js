@@ -103,17 +103,51 @@ function updateFB () {
     if (hours < 13 && hours > 6) {
         setTimeout(updateFB, 300000);
     } else if (hours < 7 && hours > 0){
-        setTimeout(updateFB, ((7-hours) * 60 * 1000));
+        setTimeout(updateFB, ((7-hours) * 3600 * 1000));
     } else if (hours > 13 && hours < 24) {
-        setTimeout(updateFB, ((31-hours) * 60 * 1000));
+        setTimeout(updateFB, ((31-hours) * 3600 * 1000));
     } else {
-        setTimeout(updateFB, 600000);
+        setTimeout(updateFB, 3600000);
     }
 }
 
 function updateWU() {
     document.getElementById('wu-radar').src += '';
 }
+
+function updateForecast1 () {
+
+    var weatherWeekly = [];  //array for 3 day forcast display bottom left
+ 
+    var weatherToday = {};
+
+    $.ajax({
+        url : "http://api.wunderground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
+        dataType : "jsonp",
+        success : function(parsed_json) {
+
+            weatherToday.forecastTxtDay = parsed_json['forecast']['txt_forecast']['forecastday'][0]['fcttext'];
+            weatherToday.forecastTxtNight = parsed_json['forecast']['txt_forecast']['forecastday'][1]['fcttext'];
+            weatherToday.tempHigh = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+        
+            for ( var i=0; i<4; i++ ) {
+                weatherWeekly.push({});
+                weatherWeekly[i].dayShort = parsed_json['forecast']['simpleforecast']['forecastday'][i]['date']['weekday_short'];
+                weatherWeekly[i].tempHigh = parsed_json['forecast']['simpleforecast']['forecastday'][i]['high']['fahrenheit'];
+                weatherWeekly[i].tempLow = parsed_json['forecast']['simpleforecast']['forecastday'][i]['low']['fahrenheit'];
+                weatherWeekly[i].picUrl = parsed_json['forecast']['simpleforecast']['forecastday'][i]['icon_url'];
+                weatherWeekly[i].winds = parsed_json['forecast']['simpleforecast']['forecastday'][i]['maxwind']['mph'];
+
+            }
+                
+
+
+        }
+    });
+
+
+}
+
 /*
 function drawCanvas (referNum){
         var ctx = document.getElementById("refer-canvas" + referNum).getContext("2d");
@@ -425,7 +459,7 @@ $(document).ready( function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ]];
-    var timeData = ["04:15:37","04:17:37","04:19:37","04:16:37","04:18:37","01:02:37","01:02:37","01:02:37","01:02:37"];
+    var timeData = ["19:01:37","18:57:37","19:02:37","19:03:37","19:04:37","01:02:37","01:02:37","01:02:37","01:02:37"];
     var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00"];
     var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Outdoor"];
  /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
@@ -483,8 +517,11 @@ $(document).ready( function() {
     setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates FB iframe every 10 minutes, will fix with better code later
     setInterval(updateWU, 600000);
-  
- 
+   
+    updateForecast1();
+
+
+
 });
 
 
