@@ -69,7 +69,7 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
         } else if (referData[i][0]["y"] > 42) {  // check for high temps
             if ((referData[i][1]["y"] > 42) && (referData[i][2]["y"] > 42) && (referData[i][3]["y"] > 42)) { // check for last 4 min critical temp colors
                 chart[i].options.data[0].dataPoints = referData[i];
-                chart[i].options.backgroundColor = "red";
+                chart[i].options.backgroundColor = "#FF5252";
                 chart[i].options.title.text = "Critical-Temp:" + sensorName[i];
                 chart[i].options.title.fontSize = 14;
             } else {                                                                                        // if < 4 min throws high temp colors
@@ -122,7 +122,7 @@ function updateForecast1 () {
     var weatherToday = {};
 
     $.ajax({
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
+        url : "http://api.wunde rground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
 
@@ -139,14 +139,23 @@ function updateForecast1 () {
                 weatherWeekly[i].winds = parsed_json['forecast']['simpleforecast']['forecastday'][i]['maxwind']['mph'];
 
             }
-                
 
+            updateWeatherHtml(weatherWeekly, weatherToday);
 
         }
     });
 
 
 }
+
+function updateWeatherHtml(weatherWeekly, weatherToday) {
+
+    //update scrolling forecast for today
+    document.getElementById('todaysForecast').innerHTML = "<em>Today's Forecast:</em> " + weatherToday.forecastTxtDay + "<br><br><em>Tonight:</em> " + weatherToday.forecastTxtNight + "<br>";
+    document.getElementById('todayIconUrl').src =  weatherWeekly[0].picUrl;
+    document.getElementById('todaysHigh').innerHTML =  "H: " + weatherToday.tempHigh + "&deg";
+    //update 3 day forecast under scrolling forcast
+} 
 
 /*
 function drawCanvas (referNum){

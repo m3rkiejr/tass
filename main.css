@@ -25,52 +25,50 @@ body {
 
 }
 .refer-1-plot {
-    background: lightblue;
-
+ background: linear-gradient(to right, #A0C2FA , #6DB06D);
 }
 .refer-1-info {
-    background: darkseagreen;
+    background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;
 
     
 }
 .refer-2-plot {
-    background: lightsteelblue;
-
+    background: linear-gradient(to right, #A0C2FA , #6DB06D);
 }
 .refer-2-info {
-    background: lightyellow;
+    background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;
 }
 .refer-3-plot {
-    background: lightblue;
+    background: linear-gradient(to right, #A0C2FA , #6DB06D);
 
 }
 .refer-3-info {
-    background: darkseagreen;
+    background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;   
 }
 .refer-4-plot {
-    background: lightsteelblue;
+    background: linear-gradient(to right, #A0C2FA , #6DB06D);
 
 }
 .refer-4-info {
-    background: green;
+    background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;
 }
 .refer-5-plot {
-    background: lightblue;
+    background: linear-gradient(to right, #A0C2FA , #6DB06D);
 
 }
 .refer-5-info {
-    background: darkseagreen;
+    background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
     text-align: center;  
 }
 
 
 .current-weather {
 
-
+    
     background: #EEEEEE;
     height:75px;
 
@@ -82,6 +80,7 @@ body {
 }
 
 .forecast {
+    white-space:  nowrap;
     font-size: 16px;
     text-shadow: 1px 1px 1px gray;
 
