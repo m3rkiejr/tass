@@ -46,9 +46,10 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
             chart[i].options.data[0].dataPoints = null;
             chart[i].options.backgroundColor = "black";
             chart[i].options.title.text = "Sensor Disabled: " + sensorName[i];
-            chart[i].options.title.fontSize = 20;
-            tempDisplay.innerHTML = "Disabled<br>";
-            tempDisplay.style.color = "black"
+            chart[i].options.title.fontSize = 16;
+            tempDisplay.innerHTML = "Disabled";
+            tempDisplay.style.color = "black";
+            tempDisplay.style.fontSize = "18px";
                         
         } else if (timeCheck(timeData[i])) {  //checks time to see if signal has been lost for more than 5 minutes
             chart[i].options.data[0].dataPoints = null;
@@ -56,7 +57,7 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
             chart[i].options.title.text = "Signal Loss: " + sensorName[i];
             chart[i].options.title.fontSize = 20;
             tempDisplay.innerHTML = referData[i][0]["y"].toFixed([1]) +  String.fromCharCode(176) + "<h6></h6>";
-            tempDisplay.style.color = "lightgray"
+            tempDisplay.style.color = "lightgray";
 
         } else if (Math.abs(referData[i][0]["y"]) == 196.60){  //for sensor error (sensors report -196.60 if there is an error- software reports 196.60 if error)
             chart[i].options.data[0].dataPoints = null;
@@ -64,7 +65,7 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
             chart[i].options.title.text = "Sensor Error: " + sensorName[i];
             chart[i].options.title.fontSize = 35;
             tempDisplay.innerHTML = "Error";
-            tempDisplay.style.color = "orange"
+            tempDisplay.style.color = "orange";
 
         } else if (referData[i][0]["y"] > 42) {  // check for high temps
             if ((referData[i][1]["y"] > 42) && (referData[i][2]["y"] > 42) && (referData[i][3]["y"] > 42)) { // check for last 4 min critical temp colors
@@ -79,14 +80,14 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
                 chart[i].options.title.fontSize = 14;            
             }
             tempDisplay.innerHTML = referData[i][0]["y"].toFixed([1]) +  String.fromCharCode(176) + "<h6></h6>";
-            tempDisplay.style.color = "red"
+            tempDisplay.style.color = "red";
         } else {                                                                            //render normal chart
             chart[i].options.title.fontSize = 10;
             chart[i].options.title.text = sensorName[i];
             chart[i].options.data[0].dataPoints = referData[i];
             chart[i].options.backgroundColor = "skyblue";
             tempDisplay.innerHTML = referData[i][0]["y"].toFixed([1]) +  String.fromCharCode(176) + "<h6></h6>";
-            tempDisplay.style.color = "blue"
+            tempDisplay.style.color = "blue";
         }
        
         chart[i].render();
@@ -137,7 +138,7 @@ function updateForecast1 () {
                 weatherWeekly[i].tempLow = parsed_json['forecast']['simpleforecast']['forecastday'][i]['low']['fahrenheit'];
                 weatherWeekly[i].picUrl = parsed_json['forecast']['simpleforecast']['forecastday'][i]['icon_url'];
                 weatherWeekly[i].winds = parsed_json['forecast']['simpleforecast']['forecastday'][i]['maxwind']['mph'];
-
+                weatherWeekly[i].pop = parsed_json['forecast']['simpleforecast']['forecastday'][i]['pop'];
             }
 
             updateWeatherHtml(weatherWeekly, weatherToday);
@@ -155,6 +156,7 @@ function updateWeatherHtml(weatherWeekly, weatherToday) {
     document.getElementById('todayIconUrl').src =  weatherWeekly[0].picUrl;
     document.getElementById('todaysHigh').innerHTML =  "H: " + weatherToday.tempHigh + "&deg";
     //update 3 day forecast under scrolling forcast
+
 } 
 
 /*

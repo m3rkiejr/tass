@@ -16,7 +16,7 @@ body {
 }
 
 .refersize{
-    height: 124px;
+    height: 118px;
     overflow: hidden;
     
 }
@@ -25,7 +25,7 @@ body {
 
 }
 .refer-1-plot {
- background: linear-gradient(to right, #A0C2FA , #6DB06D);
+ background: linear-gradient(to right, #6DB06D , #6DB06D);
 }
 .refer-1-info {
     background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
@@ -35,7 +35,7 @@ body {
     
 }
 .refer-2-plot {
-    background: linear-gradient(to right, #A0C2FA , #6DB06D);
+    background: linear-gradient(to right, #6DB05A , #6DB06D);
 }
 .refer-2-info {
     background: linear-gradient(darkseagreen, #AAE3B9, darkseagreen);
@@ -44,7 +44,7 @@ body {
 }
 
 .refer-3-plot {
-    background: linear-gradient(to right, #A0C2FA , #6DB06D);
+    background: linear-gradient(to right, #6DB06D , #6DB06D);
 
 }
 .refer-3-info {
@@ -54,7 +54,7 @@ body {
 
 }
 .refer-4-plot {
-    background: linear-gradient(to right, #A0C2FA , #6DB06D);
+    background: linear-gradient(to right, #6DB06D , #6DB06D);
 
 }
 .refer-4-info {
@@ -64,7 +64,7 @@ body {
 
 }
 .refer-5-plot {
-    background: linear-gradient(to right, #A0C2FA , #6DB06D);
+    background: linear-gradient(to right, #6DB06D , #6DB06D);
 
 }
 .refer-5-info {
@@ -78,13 +78,23 @@ body {
 .current-weather {
 
     
-    background: #EEEEEE;
+    background: #EEDEEE;
     height:75px;
 
 }
 .five-day {
-    background: rebeccapurple;
-    height:75px;
+    background: #DDEEDD;
+    height:100px;
+    text-align: center;
+
+}
+
+.fore1{
+    border: 1px solid gray;
+    height:100px;
+    padding-top:5px;
+    line-height: 15px;
+    
 
 }
 
