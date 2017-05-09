@@ -123,7 +123,7 @@ function updateForecast1 () {
     var weatherToday = {};
 
     $.ajax({
-        url : "http://api.wunde rground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
+        url : "http://api.wunderground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
 
@@ -156,6 +156,14 @@ function updateWeatherHtml(weatherWeekly, weatherToday) {
     document.getElementById('todayIconUrl').src =  weatherWeekly[0].picUrl;
     document.getElementById('todaysHigh').innerHTML =  "H: " + weatherToday.tempHigh + "&deg";
     //update 3 day forecast under scrolling forcast
+
+    for (var i=0; i < 4; i++){
+        document.getElementById('dayShort' + i).innerHTML = weatherWeekly[i].dayShort;
+        document.getElementById('dayHighLow' + i).innerHTML = "H: " + weatherWeekly[i].tempHigh + "&deg" + " L: " + weatherWeekly[i].tempLow + "&deg";
+        document.getElementById('dayPic' + i).src = weatherWeekly[i].picUrl;
+        document.getElementById('dayWinds' + i).innerHTML = "Max Winds: " + weatherWeekly[i].winds + "mph";
+        document.getElementById('dayPop' + i).innerHTML = "Rain Chance: " + weatherWeekly[i].pop + "%";
+    }
 
 } 
 
