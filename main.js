@@ -152,7 +152,7 @@ function updateForecast1 () {
 function updateWeatherHtml(weatherWeekly, weatherToday) {
 
     //update scrolling forecast for today
-    document.getElementById('todaysForecast').innerHTML = "<em>Today's Forecast:</em> " + weatherToday.forecastTxtDay + "<br><br><em><tab><tab>Tonight:</em> " + weatherToday.forecastTxtNight + "<br>";
+    document.getElementById('todaysForecast').innerHTML = "<em>Rest of Today:</em> " + weatherToday.forecastTxtDay + "<br><br><em><tab><tab>Tonight:</em> " + weatherToday.forecastTxtNight + "<br>";
     document.getElementById('todayIconUrl').src =  weatherWeekly[0].picUrl;
     document.getElementById('todaysHigh').innerHTML =  "H: " + weatherToday.tempHigh + "&deg";
     //update 3 day forecast under scrolling forcast

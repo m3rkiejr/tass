@@ -54,7 +54,7 @@ body {
 
 }
 .refer-4-plot {
-    background: linear-gradient(to right, #6DB06D , #6DB06D);
+    background: linear-gradient(to right, #6DB05A , #6DB06D);
 
 }
 .refer-4-info {
@@ -134,7 +134,7 @@ body {
 .clock{
     height:30px;
     float:right;
-    padding-top:5px;
+    padding-top:2px;
     font-size: 30px;
     color: #FFFFAA;
     text-shadow: 1px 1px 1px black;
