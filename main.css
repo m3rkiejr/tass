@@ -123,34 +123,34 @@ body {
  
 }
 .front-room {
-    background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
+    background: linear-gradient(to right, rgba(0, 0, 120, .5) , rgba(0, 0, 50, .1));
     border: 1px solid black;
     position: relative;
-    width: 250px;
+    width: 295px;
     height: 200px;
-    right: 30px;
+    right: 29px;
     top: 45px;
 
 
 }
 .middle-room{
-    background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
+    background: linear-gradient(to right, rgba(0, 0, 120, .5) , rgba(0, 0, 50, .1));
     border: 1px solid black;
     position: relative;
-    width: 250px;
+    width: 295px;
     height: 200px;
-    right: 30px;
+    right: 29px;
     top: 45px;
  
 
 }
 .kitchen {
-    background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
+    background: linear-gradient(to right, rgba(0, 0, 120, .5) , rgba(0, 0, 50, .1));
     border: 1px solid black;
     position: relative;
-    width: 250px;
+    width: 295px;
     height: 200px;
-    right: 30px;
+    right: 29px;
     top: 45px;
 
 }
@@ -167,7 +167,7 @@ body {
     white-space: nowrap;
     height:30px;
     position: absolute;
-    right: 55px;
+    right: 45px;
     padding-top:2px;
     font-size: 30px;
     color: #FFFFAA;
