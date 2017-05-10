@@ -118,9 +118,41 @@ body {
 .facebook-feed {
     text-shadow: 1px 1px 1px rgba(255, 0, 0, .6);
     position:relative;
-    padding-top: 20px;
+    padding-top: 30px;
     
  
+}
+.front-room {
+    background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
+    border: 1px solid black;
+    position: relative;
+    width: 250px;
+    height: 200px;
+    right: 30px;
+    top: 45px;
+
+
+}
+.middle-room{
+    background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
+    border: 1px solid black;
+    position: relative;
+    width: 250px;
+    height: 200px;
+    right: 30px;
+    top: 45px;
+ 
+
+}
+.kitchen {
+    background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
+    border: 1px solid black;
+    position: relative;
+    width: 250px;
+    height: 200px;
+    right: 30px;
+    top: 45px;
+
 }
 .sidebar {
   
@@ -132,8 +164,10 @@ body {
 }
 
 .clock{
+    white-space: nowrap;
     height:30px;
-    float:right;
+    position: absolute;
+    right: 55px;
     padding-top:2px;
     font-size: 30px;
     color: #FFFFAA;
