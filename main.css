@@ -1,9 +1,13 @@
 
 
 
+html {
 
+    background: black;
+}
 
 body {
+
     background-color: rgb(230, 225, 225);
     text-shadow: 1px 1px 1px grey;
     overflow: hidden;
@@ -153,6 +157,20 @@ body {
     height: 200px;
     right: 29px;
     top: 45px;
+
+}
+.system-mode {
+    position: relative;
+    height: 121px;
+    width: 295px;
+    right: 29px;
+    top: 45px;
+    text-align: center;
+    background: linear-gradient(black, green);
+    color: #EEEEED;
+    border: 1px solid white;
+
+
 
 }
 
