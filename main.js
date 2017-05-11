@@ -36,7 +36,7 @@ function timeCheck(timeToCheck) {
         return true;}
     }
 
-function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //chart 1 is chart to be rendered, referData is a array of any length containing one x and one y coord
+function updateTChart(chart, referData, numOfCharts, sensorName, timeData, humidData) {  //chart 1 is chart to be rendered, referData is a array of any length containing one x and one y coord
     // check if sensor is dead, or sending bad info, if so, do not render new data, instead disconnect error, or sensor data error
     for (var i=0; i < numOfCharts;i++) {
 
@@ -93,6 +93,8 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData) {  //
         chart[i].render();
         document.getElementById('referName' + (i+1)).innerHTML = sensorName[i];
     }
+
+     updateTStats(referData, sensorName, humidData); //updates the thermostats
 
 }
 
@@ -167,9 +169,29 @@ function updateWeatherHtml(weatherWeekly, weatherToday) {
 
 } 
 
-function updateTStats() {
+function updateTStats(referData, sensorName, humidData) {
+ 
+    sensorName.forEach(function(str, position){
 
+        switch(str) {
+            case "Front":
+                document.getElementById('tempFrontRoom').innerHTML = referData[position][0]['y'].toFixed([0]);
+                document.getElementById('humFrontRoom').innerHTML = Number(humidData[position]).toFixed([0]) + "%";
+                
+            case "Middle":
+                document.getElementById('tempMiddleRoom').innerHTML = referData[position][0]['y'].toFixed([0]);
+                document.getElementById('humMiddleRoom').innerHTML = Number(humidData[position]).toFixed([0]) + "%";
+                
+            case "Kitchen":
+                document.getElementById('tempKitchen').innerHTML = referData[position][0]['y'].toFixed([0]);
+                document.getElementById('humKitchen').innerHTML = Number(humidData[position]).toFixed([0]) + "%";
+                
+        }
+
+
+    });
 }
+
 
 
 
@@ -372,7 +394,7 @@ $(document).ready( function() {
                 { x: 29, y: 40.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 45.12},
+                { x: 1, y: 82.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 56.12 },
@@ -403,7 +425,38 @@ $(document).ready( function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 45.12},
+                { x: 1, y: 99.12},
+                { x: 2, y: 39.61},
+                { x: 3, y: 40.16 },
+                { x: 4, y: 56.12 },
+                { x: 5, y: 59.12 },
+                { x: 6, y: 41.01 },
+                { x: 7, y: 42.02 },
+                { x: 8, y: 41.10 },
+                { x: 9, y: 39.08 },
+                { x: 10, y: 43.10 },
+                { x: 11, y: 43.10 },
+                { x: 12, y: 43.15 },
+                { x: 13, y: 43.12},
+                { x: 14, y: 43.61},
+                { x: 15, y: 43.16 },
+                { x: 16, y: 43.12 },
+                { x: 17, y: 43.12 },
+                { x: 18, y: 43.01 },
+                { x: 19, y: 43.02 },
+                { x: 20, y: 43.10 },
+                { x: 21, y: 43.08 },
+                { x: 22, y: 43.10 },
+                { x: 23, y: 38.10 },
+                { x: 24, y: 31.15 },
+                { x: 25, y: 38.12},
+                { x: 26, y: 33.61},
+                { x: 27, y: 40.16 },
+                { x: 28, y: 56.12 },
+                { x: 29, y: 59.12 },
+                { x: 30, y: 41.01 }
+    ], [
+                { x: 1, y: 88.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
                 { x: 4, y: 56.12 },
@@ -466,8 +519,8 @@ $(document).ready( function() {
                 { x: 30, y: 41.01 }
     ]];
     var timeData = ["19:01:37","18:57:37","19:02:37","19:03:37","19:04:37","01:02:37","01:02:37","01:02:37","01:02:37"];
-    var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00", "40.00","40.00"];
-    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Outdoor"];
+    var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","98.00", "88.00","87.00", "50.00", "60.00"];
+    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Outdoor", "Front", "Middle", "Kitchen", "LightSensor"];
  /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
     var maxTemp = 41;
     var numOfCharts = 5;
@@ -520,10 +573,10 @@ $(document).ready( function() {
     };
    
 
-    setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData); //to alter charts, change data in referData arrays
+    setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates FB iframe every 10 minutes, will fix with better code later
     setInterval(updateWU, 600000);
-   
+    setInterval(updateForecast1, 10800000);
     updateForecast1();
 
 

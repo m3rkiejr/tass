@@ -15,7 +15,7 @@ body {
 
 .main-body {
     background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
-    background-size: cover;;
+    background-size: cover;
 
 }
 
@@ -178,44 +178,68 @@ body {
     font-size: 65px;
     text-shadow: none;
 }
+.set-at {
+    font-size: 22px;
+    text-shadow: none;
+
+}
 
 #tempFrontRoom {
     position:fixed;
     top:110px;
-    right:136px;
+    right:132px;
 
 }
 #humFrontRoom {
     position:fixed;
     top:75px;
-    right:191px;
+    right:187px;
     font-size:35px;
 
 }
 #tempMiddleRoom {
     position:fixed;
     top:310px;
-    right:136px;
+    right:132px;
 
 }
 #humMiddleRoom {
     position:fixed;
     top:275px;
-    right:191px;
+    right:187px;
     font-size:35px;
 
 }
 #tempKitchen {
     position:fixed;
     top:510px;
-    right:136px;
+    right:132px;
 
 }
 #humKitchen {
     position:fixed;
     top:475px;
-    right:191px;
+    right:187px;
     font-size:35px;
+
+}
+
+#setAtFront {
+    position:fixed;
+    top:80px;
+    right:80px;
+
+}
+#setAtMiddle {
+    position:fixed;
+    top:280px;
+    right:80px;
+
+}
+#setAtKitchen {
+    position:fixed;
+    top:480px;
+    right:80px;
 
 }
 
