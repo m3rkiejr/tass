@@ -170,34 +170,44 @@
             <div class="col-lg-6 sidebar">
                 <div class="row">
                     <div class="col-lg-7">
-                <div class="logo-block side-element">
-                    <img src="./tasslogo.jpg" height="30" width="80" style="position:fixed; top:0px; right:645px" />
+                        <div class="logo-block side-element">
+                            <img src="./tasslogo.jpg" height="30" width="80" style="position:fixed; top:0px; right:645px" />
 
-                </div>
-                <div class="facebook-feed side-element">
+                        </div>
+                        <div class="facebook-feed side-element">
 
-                    <iframe id="fb-window" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmerksplace&width=400&colorscheme=light&show_faces=false&border_color&stream=true&header=false&height=500" 
-                    scrolling="no" overflow="hidden" style="top:15px; right:10px; float:left; overflow:hidden; width:375px; height:500px; background: white; position:relative; " allowtransparency="true" 
-                    frameborder="0"></iframe>
-                    <iframe id="wu-radar" src="http://api.wun derground.com/api/15b4ef203516fcdb/animatedradar/q/VA/Farmville.gif?newmaps=1&timelabel=1&timelabel.y=20&num=15&delay=25&width=376&height=220&noclutter=1&smooth=1" 
-                        height="220" width="376" style="position:fixed; left:688px; top:546px" overflow="hidden" scrolling="no"></iframe>
-                </div>
+                            <iframe id="fb-window" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmerksplace&width=400&colorscheme=light&show_faces=false&border_color&stream=true&header=false&height=500" 
+                            scrolling="no" overflow="hidden" style="top:15px; right:10px; float:left; overflow:hidden; width:375px; height:500px; background: white; position:relative; " allowtransparency="true" 
+                            frameborder="0"></iframe>
+                            <iframe id="wu-radar" src="http://api.wun derground.com/api/15b4ef203516fcdb/animatedradar/q/VA/Farmville.gif?newmaps=1&timelabel=1&timelabel.y=20&num=15&delay=25&width=376&height=220&noclutter=1&smooth=1" 
+                                height="220" width="376" style="position:fixed; left:688px; top:546px" overflow="hidden" scrolling="no"></iframe>
+                        </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="clock" id="live-clock">
                         </div>
-                <div class="front-room side-element">
-                    <h1>Front Room Temps</h1>
-                </div>
-                <div class="middle-room side-element">
-                    <h1>Middle Room Temps</h1>
-                </div>
-                <div class="kitchen side-element">
-                    <h1>Kitchen temps</h1>
-                </div>
+                        <div class="front-room side-element">
+                            <img src="./tstatfront.jpg" height="200" width="295">
+                        </div>
+                        <div class="middle-room side-element">
+                            <img src="./tstatmiddle.jpg" height="200" width="295">
+                        </div>
+                        <div class="kitchen side-element">
+                            <img src="./tstatkitchen.jpg" height="200" width="295">
+                        </div>
+                            <!-- floating temps and humidity elements for three stats on the right - changed in JS file under function updateTStats() -->
+                        <div class="stat-readouts">
+                            <div id="tempFrontRoom">89&deg</div>
+                            <div id="humFrontRoom">40%</div>
+                            <div id="tempMiddleRoom">79&deg</div>
+                            <div id="humMiddleRoom">50%</div>
+                            <div id="tempKitchen">69&deg</div>
+                            <div id="humKitchen">60%</div>
+                        </div>
 
                     </div>
 
+                </div>
             </div>
         </div>
     </div>

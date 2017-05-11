@@ -1,1 +1,5 @@
 temp max and time duration for email fire off
+
+temp Setat settings for moch thermostats
+
+
