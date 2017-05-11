@@ -81,6 +81,7 @@ body {
     background: #EEDEEE;
     height:75px;
 
+
 }
 .five-day {
     background: #DDEEDD;
@@ -156,9 +157,50 @@ body {
 }
 
 .stat-readouts {
-    font-size: 20px;
-    
+    font-size: 65px;
+    text-shadow: none;
 }
+
+#tempFrontRoom {
+    position:fixed;
+    top:110px;
+    right:140px;
+
+}
+#humFrontRoom {
+    position:fixed;
+    top:75px;
+    right:195px;
+    font-size:35px;
+
+}
+#tempMiddleRoom {
+    position:fixed;
+    top:310px;
+    right:140px;
+
+}
+#humMiddleRoom {
+    position:fixed;
+    top:275px;
+    right:195px;
+    font-size:35px;
+
+}
+#tempKitchen {
+    position:fixed;
+    top:510px;
+    right:140px;
+
+}
+#humKitchen {
+    position:fixed;
+    top:475px;
+    right:195px;
+    font-size:35px;
+
+}
+
 .sidebar {
   
   
