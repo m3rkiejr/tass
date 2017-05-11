@@ -177,15 +177,17 @@ function updateTStats(referData, sensorName, humidData) {
             case "Front":
                 document.getElementById('tempFrontRoom').innerHTML = referData[position][0]['y'].toFixed([0]);
                 document.getElementById('humFrontRoom').innerHTML = Number(humidData[position]).toFixed([0]) + "%";
+                break;
                 
             case "Middle":
                 document.getElementById('tempMiddleRoom').innerHTML = referData[position][0]['y'].toFixed([0]);
                 document.getElementById('humMiddleRoom').innerHTML = Number(humidData[position]).toFixed([0]) + "%";
-                
+                break;
+
             case "Kitchen":
                 document.getElementById('tempKitchen').innerHTML = referData[position][0]['y'].toFixed([0]);
                 document.getElementById('humKitchen').innerHTML = Number(humidData[position]).toFixed([0]) + "%";
-                
+                break;
         }
 
 
@@ -520,7 +522,7 @@ $(document).ready( function() {
     ]];
     var timeData = ["19:01:37","18:57:37","19:02:37","19:03:37","19:04:37","01:02:37","01:02:37","01:02:37","01:02:37"];
     var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","98.00", "88.00","87.00", "50.00", "60.00"];
-    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Outdoor", "Front", "Middle", "Kitchen", "LightSensor"];
+    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Outdoor", "Front", "Kitchen", "Middle", "LightSensor"];
  /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
     var maxTemp = 41;
     var numOfCharts = 5;
