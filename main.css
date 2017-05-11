@@ -164,39 +164,39 @@ body {
 #tempFrontRoom {
     position:fixed;
     top:110px;
-    right:140px;
+    right:136px;
 
 }
 #humFrontRoom {
     position:fixed;
     top:75px;
-    right:195px;
+    right:191px;
     font-size:35px;
 
 }
 #tempMiddleRoom {
     position:fixed;
     top:310px;
-    right:140px;
+    right:136px;
 
 }
 #humMiddleRoom {
     position:fixed;
     top:275px;
-    right:195px;
+    right:191px;
     font-size:35px;
 
 }
 #tempKitchen {
     position:fixed;
     top:510px;
-    right:140px;
+    right:136px;
 
 }
 #humKitchen {
     position:fixed;
     top:475px;
-    right:195px;
+    right:191px;
     font-size:35px;
 
 }
