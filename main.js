@@ -202,7 +202,7 @@ function checkAlerts () {
     var systemStatus = document.getElementById('systemStatus');
 
      $.ajax({
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/TN/Memphis.json",
+        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
@@ -618,11 +618,11 @@ $(document).ready( function() {
    
 
     setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
-    setTimeout(updateFB, 10000); //updates FB iframe every 10 minutes, will fix with better code later
-    setInterval(updateWU, 600000);
-    setInterval(updateForecast1, 10800000);
-    updateForecast1();
-    setInterval(checkAlerts, (60*1000))
+    setTimeout(updateFB, 10000); //updates timeout in function
+    setInterval(updateWU, (10*60*1000));  //10 minutes update
+    setInterval(updateForecast1, (6*60*60*1000 )); //6 hours update
+    updateForecast1(); //initial update
+    setInterval(checkAlerts, (7*60*1000)) //7 minutes update
 
 
 
