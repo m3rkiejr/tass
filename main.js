@@ -194,6 +194,48 @@ function updateTStats(referData, sensorName, humidData) {
     });
 }
 
+function checkAlerts () {
+
+    var checkAlert = "";
+    var alertMsg = "No message available";
+    var systemMode = document.getElementById('systemMode');
+    var systemStatus = document.getElementById('systemStatus');
+
+     $.ajax({
+        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/TN/Memphis.json",
+        dataType : "jsonp",
+        success : function(parsed_json) {
+            try {  // incase description is undefined, which it will be 95% of the time 
+            if (parsed_json['alerts'][0]['description'] != undefined) {
+                checkAlert= parsed_json['alerts'][0]['description'];
+            
+                alertMsg =  parsed_json['alerts'][0]['message'];
+                var mainWindow = document.getElementById('mainWindow');
+                mainWindow.style = "visibility: hidden;";
+                var alertsWindow = document.getElementById('alertsWindow');
+
+                alertsWindow.style = "visibility: visible;"
+                alertsWindow.innerHTML = "<em><h1>Alert Message!</h1><h1>" + checkAlert + "</h1><h3>" + alertMsg + "</h3>";
+                systemStatus.innerHTML = "Weather Alert";
+                systemMode.style = "background: red;";
+
+                setTimeout(function(){
+                    alertsWindow.innerHTML = "";
+                    mainWindow.style ="visibility: visible;";
+                    alertsWindow.style = "visibility: hidden;";
+                    }, 30000);
+            }  else {
+                systemMode.style = "background: linear-gradient(black, green);"
+                systemStatus.innerHTML = "Normal"
+
+
+            } } catch (e) {
+
+            }
+            
+        }});
+}
+
 
 
 
@@ -580,6 +622,8 @@ $(document).ready( function() {
     setInterval(updateWU, 600000);
     setInterval(updateForecast1, 10800000);
     updateForecast1();
+    setInterval(checkAlerts, (60*1000))
+
 
 
 

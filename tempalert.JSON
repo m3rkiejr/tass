@@ -1,0 +1,44 @@
+
+{
+  "response": {
+  "version":"0.1",
+  "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+  "features": {
+  "alerts": 1
+  }
+	}
+		,"query_zone": "088",
+	"alerts": [
+		{
+		"type": "FLO",
+		"description": "Flood Warning",
+		"date": "11:04 am CDT on May 9, 2017",
+		"date_epoch": "1494345840",
+		"expires": "1:00 AM CDT on May 18, 2017",
+		"expires_epoch": "1495087200",
+		"tz_short":"CDT",
+		"tz_long":"America/Chicago",
+		"message": "\u000AThe Flood Warning continues for\u000A the Mississippi River at Memphis\u000A* until Wednesday may 17.\u000A* At 10 am Tuesday the stage was 34.1 feet.\u000A* Minor flooding is occurring and minor flooding is forecast.\u000A* Maximum forecast stage of 36.0 feet Friday may 12.\u000A* Flood stage is 34.0 feet.\u000A* The river rose above flood stage Tuesday may 09 and will continue \u000A rising to near 36.0 feet by Friday may 12. The river will fall \u000A below flood stage Wednesday may 17.\u000A* At 37.0 feet...in Arkansas, the grain terminal and other businesses\u000A by it south of West Memphis are being covered by water. At Memphis,\u000A the fuel facility south of the river gage is flooding.\u000A\u000A\u000ALat...Lon 3539 9025 3539 8995 3533 9005 3513 9004\u000A 3491 9008 3491 9041 \u000A\u000A\u000A\u000A\u000A",
+		"phenomena": "FL",
+		"significance": "W",
+		"ZONES": [
+		{
+		"state":"AR",
+		"ZONE":"036"
+		}
+		,
+		{
+		"state":"MS",
+		"ZONE":"001"
+		}
+		,
+		{
+		"state":"TN",
+		"ZONE":"088"
+		}
+		],
+		"StormBased": {
+		}
+		}
+	]
+}

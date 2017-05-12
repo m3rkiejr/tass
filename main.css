@@ -8,7 +8,7 @@ html {
 
 body {
 
-    background-color: rgb(230, 225, 225);
+    background-color: black;
     text-shadow: 1px 1px 1px grey;
     overflow: hidden;
 }
@@ -16,7 +16,15 @@ body {
 .main-body {
     background: linear-gradient(to right, rgba(0, 0, 150, 1) , rgba(0, 0, 50, .1));
     background-size: cover;
+    visibility: visible;
 
+
+}
+#alertsWindow {
+    color: white;
+    text-align: center;
+    background: red;
+    visibility: hidden;
 }
 
 .refersize{
