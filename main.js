@@ -125,7 +125,7 @@ function updateForecast1 () {
     var weatherToday = {};
 
     $.ajax({
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
+        url : "http://api.wun derground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
 
@@ -202,38 +202,55 @@ function checkAlerts () {
     var systemStatus = document.getElementById('systemStatus');
 
      $.ajax({
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
+        url : "http://api.wun derground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
-            if (parsed_json['alerts'][0]['description'] != undefined) {
-                checkAlert= parsed_json['alerts'][0]['description'];
-            
-                alertMsg =  parsed_json['alerts'][0]['message'];
-                var mainWindow = document.getElementById('mainWindow');
-                mainWindow.style = "visibility: hidden;";
-                var alertsWindow = document.getElementById('alertsWindow');
+                if (parsed_json['alerts'][0]['description'] != undefined) {
+                    checkAlert= parsed_json['alerts'][0]['description'];
+                
+                    alertMsg =  parsed_json['alerts'][0]['message'];
+                    var mainWindow = document.getElementById('mainWindow');
+                    mainWindow.style = "visibility: hidden;";
+                    var alertsWindow = document.getElementById('alertsWindow');
 
-                alertsWindow.style = "visibility: visible;"
-                alertsWindow.innerHTML = "<em><h1>Alert Message!</h1><h1>" + checkAlert + "</h1><h3>" + alertMsg + "</h3>";
-                systemStatus.innerHTML = "Weather Alert";
-                systemMode.style = "background: red;";
+                    alertsWindow.style = "visibility: visible;"
+                    alertsWindow.innerHTML = "<em><h1>Alert Message!</h1><h1>" + checkAlert + "</h1><h3>" + alertMsg + "</h3>";
+                    systemStatus.innerHTML = "Weather Alert";
+                    systemMode.style = "background: red;";
 
-                setTimeout(function(){
-                    alertsWindow.innerHTML = "";
-                    mainWindow.style ="visibility: visible;";
-                    alertsWindow.style = "visibility: hidden;";
-                    }, 30000);
-            }  else {
-                systemMode.style = "background: linear-gradient(black, green);"
-                systemStatus.innerHTML = "Normal"
+                    setTimeout(function(){
+                        alertsWindow.innerHTML = "";
+                        mainWindow.style ="visibility: visible;";
+                        alertsWindow.style = "visibility: hidden;";
+                        }, 30000);
+                }  else {
+                    systemMode.style = "background: linear-gradient(black, green);"
+                    systemStatus.innerHTML = "Normal"
 
 
-            } } catch (e) {
+                } 
+            } catch (e) {
 
             }
             
         }});
+}
+
+function updateData(referData, humidData, timeData) {
+
+        $.ajax({
+        url : "./tempdata.JSON",
+        dataType : "jsonp",
+        success : function(parsed_json) {
+
+            console.log(parsed_json[0]['temp0'][0]['y'])
+       //     for (var x=0; x < 30; x++) {
+         //       referData[x][] = parsed_json['forecast']['txt_forecast']['forecastday'][0]['fcttext'];
+       // }
+        }
+        });
+
 }
 
 
@@ -623,6 +640,7 @@ $(document).ready( function() {
     setInterval(updateForecast1, (6*60*60*1000 )); //6 hours update
     updateForecast1(); //initial update
     setInterval(checkAlerts, (7*60*1000)) //7 minutes update
+    setInterval(updateData, (10000), referData, humidData, timeData);
 
 
 
