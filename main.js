@@ -240,7 +240,7 @@ function checkAlerts () {
 function updateData(referData, humidData, timeData) {
 
         $.ajax({
-        url : "./tempdata.JSON",
+        url : "tempdata.JSON",
         dataType : "jsonp",
         success : function(parsed_json) {
 
