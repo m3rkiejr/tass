@@ -244,13 +244,13 @@ function updateData(referData, humidData, timeData) {
         dataType : "jsonp",
         success : function(parsed_json) {
 
-            console.log(parsed_json[0]['temp0'][0]['y'])
+            console.log(parsed_json[0]['temp0'][0]['y']);
        //     for (var x=0; x < 30; x++) {
          //       referData[x][] = parsed_json['forecast']['txt_forecast']['forecastday'][0]['fcttext'];
        // }
         }
         });
-
+        console.log("made it top here");
 }
 
 
