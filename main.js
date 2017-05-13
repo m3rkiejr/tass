@@ -167,6 +167,10 @@ function updateWeatherHtml(weatherWeekly, weatherToday) {
         document.getElementById('dayPop' + i).innerHTML = "Rain Chance: " + weatherWeekly[i].pop + "%";
     }
 
+
+
+
+
 } 
 
 function updateTStats(referData, sensorName, humidData) {
@@ -192,6 +196,9 @@ function updateTStats(referData, sensorName, humidData) {
 
 
     });
+
+    document.getElementById('outdoorTemp').innerHTML = "Temp: " + referData[5][0]['y'].toFixed([0]) + "&deg"; //sensor 5, last reading
+    document.getElementById('outdoorHum').innerHTML = "Humd: " + Number(humidData[5]).toFixed([0]) + "%";
 }
 
 function checkAlerts () {
