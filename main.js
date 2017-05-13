@@ -248,7 +248,7 @@ function updateData(referData, humidData, timeData) {
 
 
             var tempdataRequest = new XMLHttpRequest();
-            tempdataRequest.open('GET', 'http://localhost/tass/tempdata.JSON');
+            tempdataRequest.open('GET', 'http://localhost/tass/tempdata.JSON?nocache=' + ((new Date()).getTime()));
             tempdataRequest.onload = function() {
                 var unitId = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
