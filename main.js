@@ -239,7 +239,7 @@ function checkAlerts () {
 
 function updateData(referData, humidData, timeData) {
 
-/*
+
             var tempdataRequest = new XMLHttpRequest();
             tempdataRequest.open('GET', 'http://localhost/tass/carouselinfo.JSON');
             tempdataRequest.onload = function() {
@@ -248,9 +248,11 @@ function updateData(referData, humidData, timeData) {
 
             };
             tempdataRequest.send();
-*/
+            console.log("here is it" + tempData['1']['temp0'][0]);
+            
 
 
+/*
         $.ajax({
         url : "http://localhost/tass/tempdata.JSON",
         dataType : "jsonp",
@@ -262,7 +264,7 @@ function updateData(referData, humidData, timeData) {
        // }
         }
         });
-        console.log("made it top here"); 
+        console.log("made it top here"); */
 }
 
 
