@@ -47,9 +47,9 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData, humid
             chart[i].options.backgroundColor = "black";
             chart[i].options.title.text = "Sensor Disabled: " + sensorName[i];
             chart[i].options.title.fontSize = 16;
-            tempDisplay.innerHTML = "Disabled";
+            tempDisplay.innerHTML = "DIS";
             tempDisplay.style.color = "black";
-            tempDisplay.style.fontSize = "18px";
+            
                         
         } else if (timeCheck(timeData[i])) {  //checks time to see if signal has been lost for more than 5 minutes
             chart[i].options.data[0].dataPoints = null;
@@ -264,9 +264,7 @@ function updateData(referData, humidData, timeData) {
                     timeData[i] = tempData[unitId[i]]['time0'];
                 }
 
-                console.log("finished with no errors!");
-                //referData[0][0]['y'] =  tempData['1']['temp0'][0];
-                console.log(referData[0][0]['y']);
+
             };
             tempdataRequest.send();
             
@@ -615,7 +613,7 @@ $(document).ready( function() {
     ]];
     var timeData = ["19:01:37","18:57:37","19:02:37","19:03:37","19:04:37","01:02:37","01:02:37","01:02:37","01:02:37"];
     var humidData = ["40.00", "40.00","40.00", "40.00","40.00", "40.00","98.00", "88.00","87.00", "50.00", "60.00"];
-    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cooks-Bayunit", "Pizza-Prep", "Outdoor", "Front", "Middle", "Kitchen", "LightSensor"];
+    var sensorName = ["Walk-in", "Prep-Reach-In", "Prep-Bayunit", "Cook-Bayunit", "Pizza-Prep", "Outdoor", "Front", "Middle", "Kitchen", "LightSensor"];
  /* this section is for creating object charts 1 - 5,  baseChart changes all chart baselines */
     var maxTemp = 41;
     var numOfCharts = 5;
