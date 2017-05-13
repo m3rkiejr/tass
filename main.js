@@ -240,31 +240,18 @@ function checkAlerts () {
 function updateData(referData, humidData, timeData) {
 
 
-            var tempdataRequest = new XMLHttpRequest();
-            tempdataRequest.open('GET', 'http://localhost/tass/carouselinfo.JSON');
-            tempdataRequest.onload = function() {
-                var tempData = JSON.parse(tempdataRequest.responseText);
-                
-
-            };
-            tempdataRequest.send();
-            console.log("here is it" + tempData['1']['temp0'][0]);
-            
-
-
-/*
         $.ajax({
         url : "http://localhost/tass/tempdata.JSON",
         dataType : "jsonp",
         success : function(parsed_json) {
             console.log("inside success");
-            console.log(parsed_json[0]['temp0'][0]['y']);
+            console.log(parsed_json['1']['temp0'][0]['y']);
        //     for (var x=0; x < 30; x++) {
          //       referData[x][] = parsed_json['forecast']['txt_forecast']['forecastday'][0]['fcttext'];
        // }
         }
         });
-        console.log("made it top here"); */
+        console.log("made it top here"); 
 }
 
 
