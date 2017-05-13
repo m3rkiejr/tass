@@ -241,7 +241,7 @@ function updateData(referData, humidData, timeData) {
 
 
             var tempdataRequest = new XMLHttpRequest();
-            tempdataRequest.open('GET', 'http://192.168.0.30/tass/tempdata.JSON');
+            tempdataRequest.open('GET', 'http://localhost/tass/tempdata.JSON');
             tempdataRequest.onload = function() {
                 var tempData = JSON.parse(tempdataRequest.responseText);
                 
