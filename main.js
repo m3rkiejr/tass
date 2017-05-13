@@ -245,7 +245,7 @@ function updateData(referData, humidData, timeData) {
             tempdataRequest.onload = function() {
                 var tempData = JSON.parse(tempdataRequest.responseText);
                 console.log("here is it" + tempData['1']['temp0'][0]);
-
+                referData[0][0]['y'] =  tempData['1']['temp0'][0];
             };
             tempdataRequest.send();
             
