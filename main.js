@@ -243,8 +243,28 @@ function updateData(referData, humidData, timeData) {
             var tempdataRequest = new XMLHttpRequest();
             tempdataRequest.open('GET', 'http://localhost/tass/tempdata.JSON');
             tempdataRequest.onload = function() {
+                var unitId = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
                 var tempData = JSON.parse(tempdataRequest.responseText);
-                console.log("here is it" + tempData['1']['temp0'][0]);
+
+                for (var i=0; i < 10; i++) {    // read in temp data
+
+                    for (j=0; j < 30; j++) {
+                        referData[i][j]['y'] = Number(tempData[unitId[i]]['temp0'][j]);
+
+                    }
+                }
+                // read in humidity data
+                for(i=0;i < 10; i++){
+                    humidData[i] = Number(tempData[unitId[i]]['humidity']);
+                }
+
+                // read in time data
+                for(i=0;i < 10; i++){
+                    timeData[i] = tempData[unitId[i]]['time0'];
+                }
+
+                console.log("finished with no errors!");
                 //referData[0][0]['y'] =  tempData['1']['temp0'][0];
                 console.log(referData[0][0]['y']);
             };
