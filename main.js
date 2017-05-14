@@ -247,7 +247,7 @@ function checkAlerts () {
         }});
 }
 
-function updateData(referData, humidData, timeData) {
+function updateData(referData, humidData, timeData, sensorName) {
 
 
             var tempdataRequest = new XMLHttpRequest();
@@ -260,9 +260,10 @@ function updateData(referData, humidData, timeData) {
                 for (var i=0; i < 10; i++) {    // read in temp data
 
                     for (j=0; j < 30; j++) {
-                        referData[i][j]['y'] = Number(tempData[unitId[i]]['temp0'][j]);
+                        referData[i][j]['y'] = (Number(tempData[unitId[i]]['temp0'][j]) - tempData['calibration'][i]) ;
 
                     }
+                    sensorName[i] = tempData['sensorName'][i]; // reads in sensor names
                 }
                 // read in humidity data
                 for(i=0;i < 10; i++){
@@ -273,6 +274,8 @@ function updateData(referData, humidData, timeData) {
                 for(i=0;i < 10; i++){
                     timeData[i] = tempData[unitId[i]]['time0'];
                 }
+
+
 
 
             };
