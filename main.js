@@ -209,7 +209,8 @@ function checkAlerts () {
     var systemStatus = document.getElementById('systemStatus');
 
      $.ajax({
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
+       // url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
+       url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/IL/East_St_Louis.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
@@ -222,8 +223,10 @@ function checkAlerts () {
                     var alertsWindow = document.getElementById('alertsWindow');
 
                     alertsWindow.style = "visibility: visible;"
-                    alertsWindow.innerHTML = "<em><h1>Alert Message!</h1><h1>" + checkAlert + "</h1><h3>" + alertMsg + "</h3>";
-                    systemStatus.innerHTML = "Weather Alert";
+                    alertsWindow.innerHTML = "<em><h1>Alert Message!</h1><h1>" + checkAlert + "</h1><h3>" + alertMsg + "</h3><hr>" + "<img height='350' width='auto' src='https://icons.wxug.com/data/640x480/2xne_severe.gif?nocache=" + ((new Date()).getTime()) + "'>"
+                        + "<hr>";
+                    
+                    systemStatus.innerHTML = "Weather Alert<h5>" + checkAlert + "</h5>";
                     systemMode.style = "background: red;";
 
                     setTimeout(function(){
@@ -234,6 +237,7 @@ function checkAlerts () {
                 }  else {
                     systemMode.style = "background: linear-gradient(black, green);"
                     systemStatus.innerHTML = "Normal"
+                    alertsWindow.innerHTML = "";
 
 
                 } 
@@ -677,7 +681,7 @@ $(document).ready( function() {
     setTimeout(updateFB, 10000); //updates timeout in function
     setInterval(updateWU, (10*60*1000));  //10 minutes update
     setInterval(updateForecast1, (6*60*60*1000 )); //6 hours update
-    setInterval(checkAlerts, (7*60*1000)) //7 minutes update
+    setInterval(checkAlerts, (60*1000)) //7 minutes update
     setInterval(updateData, (29000), referData, humidData, timeData);
     updateForecast1(); //initial update
 
