@@ -678,9 +678,9 @@ $(document).ready( function() {
 
     setInterval(updateTChart, 31000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates timeout in function
-    setInterval(updateWU, (12*60*1000));  //10 minutes update
-    setInterval(updateForecast1, (4*60*60*1000 )); //6 hours update
-    setInterval(checkAlerts, (7*60*1000)) //7 minutes update
+    setInterval(updateWU, (8*60*1000));  //8 minutes update radar
+    setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
+    setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
     setInterval(updateData, (29000), referData, humidData, timeData);
     updateForecast1(); //initial update
 
