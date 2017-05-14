@@ -103,11 +103,11 @@ function updateFB () {
     document.getElementById('fb-window').src += '';
     var d = new Date();
     var hours = d.getHours();
-    if (hours < 13 && hours > 6) {
+    if (hours < 14 && hours > 6) {
         setTimeout(updateFB, 300000);
     } else if (hours < 7 && hours > 0){
         setTimeout(updateFB, ((7-hours) * 3600 * 1000));
-    } else if (hours > 13 && hours < 24) {
+    } else if (hours > 14 && hours < 24) {
         setTimeout(updateFB, ((31-hours) * 3600 * 1000));
     } else {
         setTimeout(updateFB, 3600000);
@@ -209,8 +209,7 @@ function checkAlerts () {
     var systemStatus = document.getElementById('systemStatus');
 
      $.ajax({
-       // url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
-       url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/IL/East_St_Louis.json",
+       url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
@@ -679,9 +678,9 @@ $(document).ready( function() {
 
     setInterval(updateTChart, 31000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates timeout in function
-    setInterval(updateWU, (10*60*1000));  //10 minutes update
-    setInterval(updateForecast1, (6*60*60*1000 )); //6 hours update
-    setInterval(checkAlerts, (60*1000)) //7 minutes update
+    setInterval(updateWU, (12*60*1000));  //10 minutes update
+    setInterval(updateForecast1, (4*60*60*1000 )); //6 hours update
+    setInterval(checkAlerts, (7*60*1000)) //7 minutes update
     setInterval(updateData, (29000), referData, humidData, timeData);
     updateForecast1(); //initial update
 
