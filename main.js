@@ -125,7 +125,7 @@ function updateForecast1 () {
     var weatherToday = {};
 
     $.ajax({
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
+        url : "http://api.wun derground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
 
@@ -213,7 +213,7 @@ function checkAlerts () {
     var systemStatus = document.getElementById('systemStatus');
 
      $.ajax({
-       url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
+       url : "http://api.wun derground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
@@ -703,12 +703,12 @@ $(document).ready( function() {
     };
    
 
-    setInterval(updateTChart, 31000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
+    setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates timeout in function
     setInterval(updateWU, (8*60*1000));  //8 minutes update radar
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
-    setInterval(updateData, (29000), referData, humidData, timeData, sensorName);
+    setInterval(updateData, (6000), referData, humidData, timeData, sensorName);
     updateForecast1(); //initial update
 
 
