@@ -214,7 +214,7 @@ function checkAlerts () {
 
      $.ajax({
        //url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/IL/East_St_Louis.json",
+        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/NC/Smithfield.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
@@ -688,7 +688,7 @@ $(document).ready( function() {
     setTimeout(updateFB, 10000); //updates timeout in function
     setInterval(updateWU, (8*60*1000));  //8 minutes update radar
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
-    setInterval(checkAlerts, (60*1000)) //6 minutes update alerts
+    setInterval(checkAlerts, (30*1000)) //6 minutes update alerts
     setInterval(updateData, (29000), referData, humidData, timeData, sensorName);
     updateForecast1(); //initial update
 
