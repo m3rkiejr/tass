@@ -12,8 +12,10 @@ $json_a = json_decode($string, true);
 
 if($_GET['unitId'])
 {
+    echo $json_a['calibration'][($_GET['unitId'])-1] . " is current value of calibration";
     $json_a['calibration'][($_GET['unitId'])-1] =  $_GET['calibrationOffset'];
     echo "Calibration successful for" . $json_a['sensorName'][($_GET['unitId'])-1];
+    echo "<br>" . "changed value: " . $json_a['calibration'][($_GET['unitId'])-1];
 }
 if ($_GET['unitNewName']) {
     $json_a['sensorName'][($_GET['unitIdNameChange']-1)] = substr($_GET['unitNewName'], 0, 12); //sets new sensor name after truncating to length of 12
