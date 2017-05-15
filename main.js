@@ -684,7 +684,7 @@ $(document).ready( function() {
     setInterval(updateWU, (8*60*1000));  //8 minutes update radar
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
-    setInterval(updateData, (29000), referData, humidData, timeData);
+    setInterval(updateData, (29000), referData, humidData, timeData, sensorName);
     updateForecast1(); //initial update
 
 
