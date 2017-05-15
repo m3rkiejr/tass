@@ -214,7 +214,6 @@ function checkAlerts () {
 
      $.ajax({
        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
-       // url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/NC/Smithfield.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
@@ -265,11 +264,11 @@ function checkAlerts () {
 
 
                 } 
-            } catch (e) {
+            } catch (e) { //for error catching for undefined variable
 
             }
             
-        }});
+        }}); //end of ajax request
 }
 
 function updateData(referData, humidData, timeData, sensorName) {
