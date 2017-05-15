@@ -213,13 +213,14 @@ function checkAlerts () {
     var systemStatus = document.getElementById('systemStatus');
 
      $.ajax({
-       //url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
-        url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/NC/Smithfield.json",
+       url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
+       // url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/NC/Smithfield.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
                 if (parsed_json['alerts'][0]['description'] != undefined) {
                     checkAlert= parsed_json['alerts'][0]['description'];
+                    alertType = parsed_json['alerts'][0]['type'];
                 
                     alertMsg =  parsed_json['alerts'][0]['message'];
                     var mainWindow = document.getElementById('mainWindow');
@@ -231,7 +232,26 @@ function checkAlerts () {
                         + "<hr>";
                     
                     systemStatus.innerHTML = "Weather Alert<h5>" + checkAlert + "</h5>";
-                    systemMode.style = "background: red;";
+
+                    switch (alertType){
+
+                        case "FLO":  //flood background
+                            systemMode.style = "background: linear-gradient(darkblue, blue);";
+                            break;
+                        case "WRN":  //S tstorm warning
+                            systemMode.style = "background: linear-gradient(red, yellow);";
+                            break;
+                        case "TOR":  //Tornado  warning
+                            systemMode.style = "background: linear-gradient(red, black);";
+                            break;
+                        default: 
+                            systemMode.style = "background: red;";
+                            break;
+
+
+
+                    }
+
 
                     setTimeout(function(){
                         alertsWindow.innerHTML = "";
@@ -688,7 +708,7 @@ $(document).ready( function() {
     setTimeout(updateFB, 10000); //updates timeout in function
     setInterval(updateWU, (8*60*1000));  //8 minutes update radar
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
-    setInterval(checkAlerts, (30*1000)) //6 minutes update alerts
+    setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
     setInterval(updateData, (29000), referData, humidData, timeData, sensorName);
     updateForecast1(); //initial update
 
