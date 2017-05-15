@@ -39,8 +39,8 @@
         "temp0":["100.63","46.51","46.63","46.74","46.63","46.74","46.74","46.74","46.85","46.63","46.63","46.51","46.63","46.74","46.63","46.74","46.74","46.74","46.85","46.63","46.63","46.51","46.63","46.74","46.63","46.74","46.74","46.74","46.85","46.63"],
         "time0":"01:02:46",
         "humidity":"42.60"},
-    "calibration" : [10, 20, 30, 0, 0, 0, -10,-10, 0, 10, 0, 0, 0, 0, 0],
-    "sensorName": ["Walk-in", "Prep-Bayunit", "Prep-Reach-In", "Cooks-Bayunit", "Pizza-Prep", "Front Dining", "Middle Dining", "Kitchen", "Outdoor"]
+    "calibration" : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "sensorName": ["Walk-in", "Prep-Bayunit", "Prep-Reach-In", "Cook-Bayunit", "Pizza-Prep", "Front", "Middle", "Kitchen", "Outdoor"]
     
     
 }

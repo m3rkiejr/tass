@@ -192,13 +192,17 @@ function updateTStats(referData, sensorName, humidData) {
                 document.getElementById('tempKitchen').innerHTML = referData[position][0]['y'].toFixed([0]);
                 document.getElementById('humKitchen').innerHTML = Number(humidData[position]).toFixed([0]) + "%";
                 break;
+            
+            case "Outdoor":
+                document.getElementById('outdoorTemp').innerHTML = "Temp: " + referData[position][0]['y'].toFixed([0]) + "&deg";
+                document.getElementById('outdoorHum').innerHTML = "Humd: " + Number(humidData[position]).toFixed([0]) + "%";
+                break;
         }
 
 
     });
 
-    document.getElementById('outdoorTemp').innerHTML = "Temp: " + referData[5][0]['y'].toFixed([0]) + "&deg"; //sensor 5, last reading
-    document.getElementById('outdoorHum').innerHTML = "Humd: " + Number(humidData[5]).toFixed([0]) + "%";
+     //sensor 5, last reading
 }
 
 function checkAlerts () {
