@@ -326,10 +326,29 @@ function updateData(referData, humidData, timeData, sensorName) {
 
 
 function sendMailNotification(subject, message) {
-
-
-
     //called to send mail notification using mailgun
+            var mailgunRequest = new XMLHttpRequest();
+            mailgunRequest.open('GET', 'http://localhost/tass/mailit.php?subject=' + subject + '&message=' + message);
+            mailgunRequest.onload = function() {
+
+                var systemMode = document.getElementById('systemMode');
+                var systemStatus = document.getElementById('systemStatus');
+
+                systemMode.style = "background: linear-gradient(black, orange);"
+                systemStatus.innerHTML = "OverTmp Mailgun Fired";
+                setTimeout(function(){
+                        systemMode.style = "background: linear-gradient(black, green);";
+                        systemStatus.innerHTML = "Normal";
+                        }, 30000);
+                  
+
+            };
+            mailgunRequest.send();
+           
+    alert(subject);
+    alert(message);
+
+
 }
 
 function checkNotifications(referData) {  //function needs to be tidy'd up, need to write more effecient code with variable timeouts instead of tracker var, and check timeout first, then cycle through variable
@@ -397,13 +416,13 @@ $(document).ready( function() {
     //  array for chart purposes, use referData[chartNumber] to set chart temps (array is [30] deep with {x and y coords})
     var referData = 
     [[
-                { x: 1, y: 196.60},
+                { x: 1, y: 41.00},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
-                { x: 4, y: 56.12 },
-                { x: 5, y: 59.12 },
+                { x: 4, y: 41.12 },
+                { x: 5, y: 41.12 },
                 { x: 6, y: 41.01 },
-                { x: 7, y: 42.02 },
+                { x: 7, y: 41.02 },
                 { x: 8, y: 41.10 },
                 { x: 9, y: 39.08 },
                 { x: 10, y: 39.10 },
@@ -428,15 +447,15 @@ $(document).ready( function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 44.60},
-                { x: 2, y: 43.61},
-                { x: 3, y: 44.16 },
-                { x: 4, y: 44.12 },
-                { x: 5, y: 45.12 },
-                { x: 6, y: 43.01 },
-                { x: 7, y: 42.02 },
+                { x: 1, y: 41.60},
+                { x: 2, y: 41.61},
+                { x: 3, y: 41.16 },
+                { x: 4, y: 41.12 },
+                { x: 5, y: 41.12 },
+                { x: 6, y: 41.01 },
+                { x: 7, y: 41.02 },
                 { x: 8, y: 41.10 },
-                { x: 9, y: 49.08 },
+                { x: 9, y: 41.08 },
                 { x: 10, y: 39.10 },
                 { x: 11, y: 38.10 },
                 { x: 12, y: 31.15 },
@@ -462,8 +481,8 @@ $(document).ready( function() {
                 { x: 1, y: 22.12},
                 { x: 2, y: 39.61},
                 { x: 3, y: 40.16 },
-                { x: 4, y: 56.12 },
-                { x: 5, y: 59.12 },
+                { x: 4, y: 41.12 },
+                { x: 5, y: 41.12 },
                 { x: 6, y: 41.01 },
                 { x: 7, y: 42.02 },
                 { x: 8, y: 41.10 },
@@ -490,22 +509,22 @@ $(document).ready( function() {
                 { x: 29, y: 59.12 },
                 { x: 30, y: 41.01 }
     ], [
-                { x: 1, y: 2000},
-                { x: 2, y: 49.61},
+                { x: 1, y: 41.00},
+                { x: 2, y: 41.00},
                 { x: 3, y: 40.16 },
-                { x: 4, y: 46.12 },
-                { x: 5, y: 49.12 },
+                { x: 4, y: 41.12 },
+                { x: 5, y: 41.12 },
                 { x: 6, y: 41.01 },
-                { x: 7, y: 42.02 },
+                { x: 7, y: 41.02 },
                 { x: 8, y: 41.10 },
-                { x: 9, y: 49.08 },
+                { x: 9, y: 41.08 },
                 { x: 10, y: 39.10 },
                 { x: 11, y: 38.10 },
                 { x: 12, y: 31.15 },
                 { x: 13, y: 34.12},
                 { x: 14, y: 39.61},
                 { x: 15, y: 40.16 },
-                { x: 16, y: 56.12 },
+                { x: 16, y: 41.12 },
                 { x: 17, y: 59.12 },
                 { x: 18, y: 41.01 },
                 { x: 19, y: 46.02 },
@@ -522,20 +541,20 @@ $(document).ready( function() {
                 { x: 30, y: 41.01 }
     ], [
                 { x: 1, y: 44.12},
-                { x: 2, y: 39.61},
-                { x: 3, y: 40.16 },
-                { x: 4, y: 56.12 },
+                { x: 2, y: 44.61},
+                { x: 3, y: 44.16 },
+                { x: 4, y: 44.12 },
                 { x: 5, y: 59.12 },
-                { x: 6, y: 41.01 },
-                { x: 7, y: 42.02 },
-                { x: 8, y: 41.10 },
-                { x: 9, y: 39.08 },
-                { x: 10, y: 39.10 },
-                { x: 11, y: 28.10 },
-                { x: 12, y: 21.15 },
-                { x: 13, y: 24.12},
-                { x: 14, y: 29.61},
-                { x: 15, y: 20.16 },
+                { x: 6, y: 44.01 },
+                { x: 7, y: 44.02 },
+                { x: 8, y: 44.10 },
+                { x: 9, y: 44.08 },
+                { x: 10, y: 44.10 },
+                { x: 11, y: 44.10 },
+                { x: 12, y: 44.15 },
+                { x: 13, y: 44.12},
+                { x: 14, y: 44.61},
+                { x: 15, y: 44.16 },
                 { x: 16, y: 26.12 },
                 { x: 17, y: 29.12 },
                 { x: 18, y: 21.01 },
@@ -768,7 +787,7 @@ $(document).ready( function() {
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
     setInterval(updateData, (31000), referData, humidData, timeData, sensorName); //updates sensor data from json file
-    setInterval(checkNotifications, (15*60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
+    setTimeout(checkNotifications, (60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
     updateForecast1(); //initial update
 
 
