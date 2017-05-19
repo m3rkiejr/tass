@@ -1,6 +1,7 @@
 
 tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+currentTracker = 0; //counter for keeping time in notifications
 
 function GetClock(){  //borrowed code, not my own, but quick and functional, thanks https://www.ricocheting.com/code/javascript/html-generator/date-time-clock
         var d=new Date();
@@ -324,7 +325,65 @@ function updateData(referData, humidData, timeData, sensorName) {
 
 
 
+function sendMailNotification(subject, message) {
 
+
+
+    //called to send mail notification using mailgun
+}
+
+function checkNotifications(referData) {  //function needs to be tidy'd up, need to write more effecient code with variable timeouts instead of tracker var, and check timeout first, then cycle through variable
+
+
+    var message = "";
+    var subject = "OverTemp Warnings";
+    var tracker = window.currentTracker;
+    for (i=0; i < 5; i++) {  //  i < number of refers to check
+        if (checkRefer(referData[i])) {
+            message += "Overtemp Warning on unit number: " + (i + 1) + " Please Check unit\r\n     (Unit avg temp is above 42 degress in the last 15 minutes)\r\n"
+        }
+    }
+
+    // if tracker > 0  (ie, Notification already sent out recently, 
+    // tracker == number of minutes left till next possible notification ~3 hours (1 tracker = 15 minutes))
+    // subtract 1 from tracker, and return value (countdown) else--
+    if (tracker > 0) {
+        tracker -= 1;
+    } else {
+        if (message != ""){
+            sendMailNotification(subject, message); // if tracker == 0, and message is not empty, sendMailNotification is called with message
+            tracker = 8;  // (8* 15 min, 2 hours)
+        } else {
+            tracker = 0;
+        }
+    }
+    window.currentTracker = tracker; //reset global variabvle for tracking
+
+
+    
+    
+
+}
+
+function checkRefer(referDataSingle) {
+    // adds last 15 minutes of data, and divides by 15, if avg is over 42, return true else return false
+    var ttl=0;
+    var avg= 0;
+    if ((referDataSingle[0]['y'] == "2000") || (referDataSingle[0]['y'] == "196.60") || (referDataSingle[0]['y'] == "-196.60")) {
+        return false;
+    }
+    for (var i=0; i<15; i++){       
+        ttl += referDataSingle[i]['y'];
+        
+    }
+    avg = ttl/15;
+    if (avg > 42) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
 
 
 
@@ -703,12 +762,13 @@ $(document).ready( function() {
     };
    
 
-    setInterval(updateTChart, 6000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
+    setInterval(updateTChart, 29000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates timeout in function
     setInterval(updateWU, (8*60*1000));  //8 minutes update radar
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
-    setInterval(updateData, (6000), referData, humidData, timeData, sensorName);
+    setInterval(updateData, (31000), referData, humidData, timeData, sensorName); //updates sensor data from json file
+    setInterval(checkNotifications, (15*60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
     updateForecast1(); //initial update
 
 
