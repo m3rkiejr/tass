@@ -327,7 +327,7 @@ function updateData(referData, humidData, timeData, sensorName) {
 
 function sendMailNotification(subject, message) {
     //called to send mail notification using mailgun
-            var mailgunRequest = new XMLHttpRequest();
+    /*        var mailgunRequest = new XMLHttpRequest();
             mailgunRequest.open('GET', 'http://localhost/tass/mailit.php?subject=' + subject + '&message=' + message);
             mailgunRequest.onload = function() {
 
@@ -343,11 +343,20 @@ function sendMailNotification(subject, message) {
                   
 
             };
-            mailgunRequest.send();
+            mailgunRequest.send(); */
+// delete this section in final version below
+
+                            systemMode.style = "background: linear-gradient(black, orange);"
+                systemStatus.innerHTML = "OverTmp Mailgun Fired";
+                setTimeout(function(){
+                        systemMode.style = "background: linear-gradient(black, green);";
+                        systemStatus.innerHTML = "Normal";
+                        }, 30000);
+
            
     alert(subject);
     alert(message);
-
+// to here
 
 }
 
