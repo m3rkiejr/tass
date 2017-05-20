@@ -20,6 +20,18 @@ function GetClock(){  //borrowed code, not my own, but quick and functional, tha
         document.getElementById('live-clock').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
 }
 
+function startup() {
+    var systemMode = document.getElementById('systemMode');
+    var systemStatus = document.getElementById('systemStatus');
+    systemMode.style = "background: linear-gradient(Black, skyblue);"
+    systemStatus.innerHTML = "System Starting<br><h6>please wait...</h6>";
+    setTimeout(function(){
+        systemMode.style = "background: linear-gradient(black, green);";
+        systemStatus.innerHTML = "Normal";
+    }, 55000);
+}
+
+
 function timeCheck(timeToCheck) {
     var d = new Date();
     var splitTime = timeToCheck.split("");
@@ -335,7 +347,7 @@ function sendMailNotification(subject, message) {
                 var systemStatus = document.getElementById('systemStatus');
 
                 systemMode.style = "background: linear-gradient(black, orange);"
-                systemStatus.innerHTML = "OverTmp Mailgun Fired";
+                systemStatus.innerHTML = "HighTemp Warning <br><h6> Mailgun Fired Off</h6>";
                 setTimeout(function(){
                         systemMode.style = "background: linear-gradient(black, green);";
                         systemStatus.innerHTML = "Normal";
@@ -344,14 +356,15 @@ function sendMailNotification(subject, message) {
 
             };
             mailgunRequest.send(); */
-// delete this section in final version below
-
-                            systemMode.style = "background: linear-gradient(black, orange);"
-                systemStatus.innerHTML = "OverTmp Mailgun Fired";
+// delete this section in final version below and uncomment above
+                var systemMode = document.getElementById('systemMode');
+                var systemStatus = document.getElementById('systemStatus');
+                systemMode.style = "background: linear-gradient(black, orange);"
+                systemStatus.innerHTML = "HighTemp Warning <br><h6> Mailgun Fired Off</h6>";
                 setTimeout(function(){
                         systemMode.style = "background: linear-gradient(black, green);";
                         systemStatus.innerHTML = "Normal";
-                        }, 30000);
+                        }, 120000);
 
            
     alert(subject);
@@ -385,7 +398,7 @@ function checkNotifications(referData) {  //function needs to be tidy'd up, need
             tracker = 0;
         }
     }
-    window.currentTracker = tracker; //reset global variabvle for tracking
+    window.currentTracker = tracker; //reset global variable for tracking
 
 
     
@@ -421,6 +434,9 @@ $(document).ready( function() {
 
     GetClock();
     setInterval(GetClock,1000);
+    startup();
+
+    
     
     //  array for chart purposes, use referData[chartNumber] to set chart temps (array is [30] deep with {x and y coords})
     var referData = 
@@ -796,8 +812,8 @@ $(document).ready( function() {
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
     setInterval(updateData, (31000), referData, humidData, timeData, sensorName); //updates sensor data from json file
-    setTimeout(checkNotifications, (60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
-    updateForecast1(); //initial update
+    setTimeout(checkNotifications, (15*60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
+    setTimeout(updateForecast1, 13000); //initial update
 
 
 
