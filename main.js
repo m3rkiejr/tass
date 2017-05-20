@@ -28,7 +28,7 @@ function startup() {
     setTimeout(function(){
         systemMode.style = "background: linear-gradient(black, green);";
         systemStatus.innerHTML = "Normal";
-    }, 55000);
+    }, 34000);
 }
 
 
@@ -806,14 +806,14 @@ $(document).ready( function() {
     };
    
 
-    setInterval(updateTChart, 29000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
+    setInterval(updateTChart, 32000, chart, referData, numOfCharts, sensorName, timeData, humidData); //to alter charts, change data in referData arrays
     setTimeout(updateFB, 10000); //updates timeout in function
     setInterval(updateWU, (8*60*1000));  //8 minutes update radar
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
-    setInterval(updateData, (31000), referData, humidData, timeData, sensorName); //updates sensor data from json file
+    setInterval(updateData, (29000), referData, humidData, timeData, sensorName); //updates sensor data from json file
     setTimeout(checkNotifications, (15*60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
-    setTimeout(updateForecast1, 13000); //initial update
+    setTimeout(updateForecast1, 17000); //initial update
 
 
 
