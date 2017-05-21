@@ -382,7 +382,7 @@ function checkNotifications(referData) {  //function needs to be tidy'd up, need
     message += '<br />';
     for (i=0; i < 5; i++) {  //  i < number of refers to check
         if (checkRefer(referData[i])) {
-            message += '<h3>Overtemp Warning on unit number: ' + (i + 1) + ' Please Check unit</h3><br /><h6>      (Unit avg temp is above 42 degress in the last 15 minutes)</h6><br />';
+            message += '<h3>Overtemp Warning on unit number: ' + (i + 1) + ' Please Check unit</h3><br /><p>      (Unit avg temp is above 42 degress in the last 15 minutes)<p><br />';
         }
     }
 
