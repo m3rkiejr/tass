@@ -28,7 +28,8 @@ $result = $mgClient->sendMessage($domain, array(
     'from'    => 'TasSystem TempAlert <mailgun@sandbox0ef229343e404c4aa58b12b2fd196112.mailgun.org>',
     'to'      => 'Merks <merksplace99@gmail.com>',
     'subject' => $subject,
-    'text'    => $message
+    'text'    => "TasSystem temp alert:",
+    'html'    => $message
 ));
 
 
