@@ -339,7 +339,7 @@ function updateData(referData, humidData, timeData, sensorName) {
 
 function sendMailNotification(subject, message) {
     //called to send mail notification using mailgun
-    /*        var mailgunRequest = new XMLHttpRequest();
+            var mailgunRequest = new XMLHttpRequest();
             mailgunRequest.open('GET', 'http://localhost/tass/mailit.php?subject=' + subject + '&message=' + message);
             mailgunRequest.onload = function() {
 
@@ -351,11 +351,11 @@ function sendMailNotification(subject, message) {
                 setTimeout(function(){
                         systemMode.style = "background: linear-gradient(black, green);";
                         systemStatus.innerHTML = "Normal";
-                        }, 30000);
+                        }, 120000);
                   
 
             };
-            mailgunRequest.send(); */
+            mailgunRequest.send(); /*
 // delete this section in final version below and uncomment above
                 var systemMode = document.getElementById('systemMode');
                 var systemStatus = document.getElementById('systemStatus');
@@ -366,7 +366,7 @@ function sendMailNotification(subject, message) {
                         systemStatus.innerHTML = "Normal";
                         }, 120000);
 
-           
+           */
     alert(subject);
     alert(message);
 // to here
@@ -381,7 +381,7 @@ function checkNotifications(referData) {  //function needs to be tidy'd up, need
     var tracker = window.currentTracker;
     for (i=0; i < 5; i++) {  //  i < number of refers to check
         if (checkRefer(referData[i])) {
-            message += "Overtemp Warning on unit number: " + (i + 1) + " Please Check unit\r\n     (Unit avg temp is above 42 degress in the last 15 minutes)\r\n"
+            message += "<h3>Overtemp Warning on unit number: " + (i + 1) + " Please Check unit</h3><br /><h6>      (Unit avg temp is above 42 degress in the last 15 minutes)</h6><br />";
         }
     }
 
@@ -438,7 +438,7 @@ $(document).ready( function() {
 
     
     
-    //  array for chart purposes, use referData[chartNumber] to set chart temps (array is [30] deep with {x and y coords})
+    //  array for chart purposes, use referData[chartNumber] to set chart temps (array is [30] deep with {x and y coords}) will cleanup in final version
     var referData = 
     [[
                 { x: 1, y: 41.00},
@@ -812,7 +812,7 @@ $(document).ready( function() {
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
     setInterval(updateData, (29000), referData, humidData, timeData, sensorName); //updates sensor data from json file
-    setTimeout(checkNotifications, (15*60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
+    setTimeout(checkNotifications, (60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
     setTimeout(updateForecast1, 17000); //initial update
 
 
