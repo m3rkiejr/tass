@@ -8,7 +8,7 @@
     </head>
     <body>
   
-        <form action="tempdata.php" method="get">
+        <form action="./tempdata.php" method="get">
         DataName: <input type="text" name="unitId"><br>
         Temp: <input type="text" name="currentTemp"><br>
         Humidity: <input type="text" name="humidity"><br>

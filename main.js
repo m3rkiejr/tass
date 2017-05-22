@@ -776,7 +776,7 @@ $(document).ready( function() {
                 stripLines: [
                             {
                                 value:42,
-                                color:"red",
+                                color:"black",
                                 label : maxTemp + String.fromCharCode(176),
                                 thickness:.7,
                                 labelBackgroundColor:"skyblue",

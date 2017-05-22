@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h1>My second PHP page</h1>
+<h1>Sensor Config and Calibration</h1>
 
 
 

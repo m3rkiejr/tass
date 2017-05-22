@@ -7,7 +7,7 @@
     <body>
        
         <div style="font-size:23px"> 
-            <form action="tempdata2.php" method="get">
+            <form action="./tempdata2.php" method="get">
                 <h2>Sensor Calibration</h2>
             SensorNumber: <input type="text" name="unitId"><br>
             Calibration Offset (negative numbers to increase, positive to decrease)<br>
