@@ -138,7 +138,7 @@ function updateForecast1 () {
     var weatherToday = {};
 
     $.ajax({
-        url : "http://api.wun derground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
+        url : "http://api.wunderground.com/api/15b4ef203516fcdb/forecast/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
 
@@ -226,7 +226,7 @@ function checkAlerts () {
     var systemStatus = document.getElementById('systemStatus');
 
      $.ajax({
-       url : "http://api.wun derground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
+       url : "http://api.wunderground.com/api/15b4ef203516fcdb/alerts/q/VA/Farmville.json",
         dataType : "jsonp",
         success : function(parsed_json) {
             try {  // incase description is undefined, which it will be 95% of the time 
