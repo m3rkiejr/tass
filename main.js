@@ -81,7 +81,7 @@ function updateTChart(chart, referData, numOfCharts, sensorName, timeData, humid
             tempDisplay.style.color = "orange";
 
         } else if (referData[i][0]["y"] > 42) {  // check for high temps
-            if ((referData[i][1]["y"] > 42) && (referData[i][2]["y"] > 42) && (referData[i][3]["y"] > 42)) { // check for last 4 min critical temp colors
+            if ((referData[i][1]["y"] > 42) && (referData[i][2]["y"] > 42) && (referData[i][3]["y"] > 42) && (referData[i][4]["y"] > 42) && (referData[i][5]["y"] > 42)&& (referData[i][6]["y"] > 42)) { // check for last 7 min critical temp colors
                 chart[i].options.data[0].dataPoints = referData[i];
                 chart[i].options.backgroundColor = "#FF5252";
                 chart[i].options.title.text = "Critical-Temp:" + sensorName[i];
@@ -254,7 +254,7 @@ function checkAlerts () {
                             systemMode.style = "background: linear-gradient(red, yellow);";
                             break;
                         case "TOR":  //Tornado  warning
-                            systemMode.style = "background: linear-gradient(red, black);";
+                            systemMode.style = "background: linear-gradient(pink, red);";
                             break;
                         default: 
                             systemMode.style = "background: red;";
@@ -382,7 +382,7 @@ function checkNotifications(referData) {  //function needs to be tidy'd up, need
     
     for (i=0; i < 5; i++) {  //  i < number of refers to check
         if (checkRefer(referData[i])) {
-            message += '<br /><h3>Overtemp Warning on unit number: ' + (i + 1) + ' Please Check unit</h3><br /><p>      (Unit avg temp is above 42 degress in the last 15 minutes)<p><br />';
+            message += '<h3>Overtemp Warning on unit number: ' + (i + 1) + ' Please Check unit</h3><p>      (Unit avg temp is above 42 degress in the last 15 minutes)<p><br />';
         }
     }
 
@@ -813,7 +813,7 @@ $(document).ready( function() {
     setInterval(updateForecast1, (2*60*60*1000 )); //2 hours update forecast
     setInterval(checkAlerts, (6*60*1000)) //6 minutes update alerts
     setInterval(updateData, (29000), referData, humidData, timeData, sensorName); //updates sensor data from json file
-    setTimeout(checkNotifications, (60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
+    setInterval(checkNotifications, (15*60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
     setTimeout(updateForecast1, 17000); //initial update
 
 
