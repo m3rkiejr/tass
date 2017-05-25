@@ -427,6 +427,10 @@ function checkRefer(referDataSingle) {
 
 }
 
+function reloadPage() {
+     location.reload(true);
+
+}
 
 
 $(document).ready( function() {
@@ -815,6 +819,8 @@ $(document).ready( function() {
     setInterval(updateData, (29000), referData, humidData, timeData, sensorName); //updates sensor data from json file
     setInterval(checkNotifications, (15*60*1000), referData);  //checks 15 min if notificatons need to be sent for overtemps
     setTimeout(updateForecast1, 17000); //initial update
+    setTimeout(reloadPage, (8*60*60*1000));  //reloads page every 8 hours
+
 
 
 
